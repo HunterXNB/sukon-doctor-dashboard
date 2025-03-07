@@ -1,1 +1,202 @@
-{}
+{
+  "metadata": {
+    "auth": {
+      "title": "Sukon Dashboard | Login"
+    },
+    "homePage": {
+      "title": "Sukon Dashboard"
+    }
+  },
+  "registerPage": {
+    "hero": {
+      "text": "Join Sukon and start your journey in providing psychological support!"
+    },
+    "form": {
+      "footer": {
+        "text": "You have an account? <a>Login now</a> "
+      },
+      "step1": {
+        "title": "Required Criteria for Each Specialization:",
+        "description": "Information you need to know before registering",
+        "psychiatrist": {
+          "title": "Psychiatrist",
+          "req1": "Graduation certificate",
+          "req2": "Practicing license",
+          "req3": "Professional license",
+          "req4": "Higher academic degree (Master’s or PhD)"
+        },
+
+        "psychologist": {
+          "title": "Clinical Psychologist",
+          "req1": "Master’s degree in psychology or clinical psychology",
+          "req2": "Two years of experience in clinical psychology",
+          "req3": "Professional license"
+        },
+        "counselor": {
+          "title": "Psychological Counselor",
+          "req1": "Master’s degree in psychology or counseling psychology",
+          "req2": "Five years of experience in psychological counseling",
+          "req3": "Professional license"
+        },
+        "btn": "Next"
+      },
+      "step2": {
+        "title": "1- Account Creation Form",
+        "description": "Please enter all required information to complete the registration process",
+        "first_name": "First Name",
+        "first_name_placeholder": "Example: Ahmed",
+        "last_name": "Last Name",
+        "last_name_placeholder": "Example: Mohamed",
+        "date_of_birth": "Date of Birth",
+        "date_of_birth_placeholder": "01/05/1985 (Day/Month/Year)",
+        "title_input": "Title",
+        "title_input_placeholder": "Mr - Mrs - Miss - Dr",
+        "mobile": "Phone Number",
+        "mobile_placeholder": "+123456789",
+        "email": "Email",
+        "email_placeholder": "example@email.com",
+        "gender": {
+          "label": "Gender",
+          "placeholder": "Male / Female",
+          "male": "Male",
+          "female": "Female"
+        },
+        "nationality": "Nationality",
+        "nationality_placeholder": "Example: Saudi",
+        "country_of_residence": "Country of Residence",
+        "country_of_residence_placeholder": "Example: United Arab Emirates",
+        "language": "Fluent Language",
+        "language_placeholder": "Example: Arabic, English",
+        "english": "English",
+        "arabic": "Arabic",
+        "french": "French",
+        "spanish": "Spanish",
+        "next": "Next Step"
+      },
+      "step3": {
+        "title": "2- Academic Qualifications",
+        "description": "Please enter all required information to complete the registration process",
+        "academic_degree": {
+          "label": "Highest Academic Degree Obtained",
+          "placeholder": "Example: Master's",
+          "bachelor": "Bachelor's",
+          "doctorate": "Doctorate",
+          "master": "Master's"
+        },
+        "university": "University",
+        "university_label": "Example: Cairo University",
+        "grad_year": "Graduation Year",
+        "grad_year_placeholder": "01/05/1985 (Day/Month/Year)",
+        "next": "Next Step",
+        "prev": "Back"
+      },
+      "step4": {
+        "title": "3- Professional Information",
+        "description": "Please enter all required information to complete the registration process",
+        "classification": {
+          "label": "Classification",
+          "placeholder": "Example: Psychiatrist",
+          "doctor": "Doctor",
+          "therapist": "Specialist"
+        },
+        "specification": "Specialization",
+        "specification_placeholder": "Example: Anxiety Disorder Treatment",
+        "years_of_exp": "Years of Experience",
+        "years_of_exp_placeholder": "Example: 7 years",
+        "license_no": "License Number",
+        "license_no_placeholder": "Example: 123456789",
+        "license_org": "Licensing Organization",
+        "license_org_placeholder": "Example: Saudi Commission for Health Specialties",
+        "work_on_clinic": {
+          "label": "Do you work in a clinic?",
+          "placeholder": "Yes / No",
+          "1": "Yes",
+          "0": "No"
+        },
+        "next": "Next Step",
+        "prev": "Back"
+      },
+      "step5": {
+        "title": "4- Upload Documents",
+        "description": "Please enter all required information to complete the registration process",
+        "cv": {
+          "label": "Attach Resume",
+          "placeholder": "Click to select a file or drag it here"
+        },
+        "certificates": {
+          "label": "Attach Certified Certificates (Educational, Experience)",
+          "placeholder": "Click to select a file or drag it here"
+        },
+        "num_of_qualifications": {
+          "label": "Do you have more than one qualification?",
+          "placeholder": "Yes / No",
+          "1": "Yes",
+          "0": "No"
+        },
+        "next": "Next Step",
+        "prev": "Back"
+      },
+      "step6": {
+        "title": "5- Review & Submit",
+        "description": "Please review all required information to complete the registration process",
+        "step1_title": "Personal Information",
+        "step2_title": "Academic Qualifications",
+        "step3_title": "Professional Information",
+        "step4_title": "Documents",
+        "prev": "Back",
+        "send": "Submit Data",
+        "loading": "Submitting..."
+      },
+      "stepper": {
+        "step1": "Personal Information",
+        "step2": "Educational Qualifications",
+        "step3": "Professional Information",
+        "step4": "Upload Documents",
+        "step5": "Review and Submit"
+      },
+      "errors": {
+        "firstNameRequiredError": "First name is required",
+        "firstNameMinLengthError": "The first name must be at least 3 characters long",
+        "secondNameRequiredError": "Second name is required",
+        "secondNameMinLengthError": "The second name must be at least 3 characters long",
+        "titleRequiredError": "Title is required",
+        "titleMinLengthError": "The title must be at least 3 characters long",
+        "emailRequiredError": "Email is required",
+        "emailInvalidError": "Sorry, this is not a valid email",
+        "mobileRequiredError": "Mobile number is required",
+        "mobileInvalidError": "Sorry, this is not a valid number",
+        "dateOfBirthRequiredError": "Date of birth is required",
+        "dateOfBirthInvalidError": "Sorry, this is not a valid date",
+        "genderRequiredError": "Gender is required",
+        "genderInvalidError": "Sorry, this is not a valid gender",
+        "genderInvalidValueError": "Sorry, this is not a valid gender",
+        "nationalityRequiredError": "Nationality is required",
+        "countryOfResidenceRequiredError": "City of residence is required",
+        "fluentLanguageRequiredError": "Fluent language is required",
+        "fluentLanguageInvalidError": "Sorry, this is not a valid language",
+        "highestDegreeRequiredError": "Highest academic degree obtained is required",
+        "highestDegreeInvalidError": "Sorry, this is not a valid degree",
+        "universityRequiredError": "University is required",
+        "graduationYearRequiredError": "Graduation year is required",
+        "graduationYearInvalidError": "Sorry, this is not a valid year",
+        "classificationRequiredError": "Classification is required",
+        "classificationInvalidTypeError": "Please enter a valid classification",
+        "specificationRequiredError": "Specialization is required",
+        "specificationInvalidError": "Please enter a valid specialization",
+        "numberOfYearsOfExperienceRequiredError": "Number of years of experience is required",
+        "numberOfYearsOfExperienceInvalidError": "Please enter a valid number of years of experience",
+        "licensingNumberRequiredError": "Licensing number is required",
+        "licensingNumberInvalidError": "Please enter a valid licensing number",
+        "licensingAreaRequiredError": "Please enter the licensing organization",
+        "licensingAreaInvalidError": "Please enter a valid licensing organization",
+        "workOnClinicRequiredError": "Please specify whether you work in a clinic or not",
+        "workOnClinicInvalidError": "Please choose a valid option",
+        "cvInvalidTypeError": "Please select a valid file",
+        "cvInvalidError": "Please select only one file",
+        "certificatesInvalidError": "Please select valid files",
+        "hasMoreThanOneQualificationRequiredError": "Please specify whether you have more than one qualification or not",
+        "hasMoreThanOneQualificationInvalidError": "Please choose a valid option"
+      }
+    }
+  }
+}

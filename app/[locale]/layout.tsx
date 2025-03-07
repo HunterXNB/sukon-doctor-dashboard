@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
@@ -10,10 +10,16 @@ const IBM = IBM_Plex_Sans_Arabic({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "سكون",
-  description: "تطبيق الصحه النفسية",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({
+    locale,
+    namespace: "metadata.homePage",
+  });
+  return {
+    title: t("title"),
+  };
+}
 
 export default async function LocaleLayout({
   children,

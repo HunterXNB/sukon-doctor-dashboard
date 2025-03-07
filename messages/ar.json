@@ -1,1 +1,201 @@
-{}
+{
+  "metadata": {
+    "auth": {
+      "title": "لوحة تحكم سكون | تسجيل الدخول"
+    },
+    "homePage": {
+      "title": "لوحة تحكم سكون"
+    }
+  },
+  "registerPage": {
+    "hero": {
+      "text": "انضم إلى سكون وابدأ رحلتك في تقديم الدعم النفسي!"
+    },
+    "form": {
+      "footer": {
+        "text": "لديك حساب ؟ <a>تسجيل الدخول</a> "
+      },
+      "step1": {
+        "title": "المعايير المطلوبة لكل فئة:",
+        "description": "معلومات عليك معرفتها قبل التسجيل",
+        "psychiatrist": {
+          "title": "طبيب نفسى",
+          "req1": "شهادة التخرج",
+          "req2": "رخصة مزاولة المهنة",
+          "req3": "شهادة نقابة الأطباء",
+          "req4": "شهادة الدراسات العليا (ماجستير أو دكتوراه)"
+        },
+        "psychologist": {
+          "title": "معالج نفسي إكلينيكي",
+          "req1": "ماجستير العلوم أو الآداب في علم النفس الإكلينيكي",
+          "req2": "خمس سنوات خبرة إكلينيكية",
+          "req3": "إثبات وثيقة الإشراف"
+        },
+        "counselor": {
+          "title": "مرشد نفسي",
+          "req1": "ماجستير العلوم أو الآداب في علم النفس",
+          "req2": "خمس سنوات خبرة في الإرشاد النفسي",
+          "req3": "إثبات وثيقة الإشراف"
+        },
+        "btn": "التالى"
+      },
+      "step2": {
+        "title": "1- إستمارة إنشاء حساب",
+        "description": "رجاء ادخال جميع البيانات المطلوبة لاستكمال عملية التسجيل",
+        "first_name": "الاسم الاول",
+        "first_name_placeholder": "مثال: أحمد",
+        "last_name": "الاسم الثانى",
+        "last_name_placeholder": "مثال: محمد",
+        "date_of_birth": "تاريخ الميلاد",
+        "date_of_birth_placeholder": "01/05/1985 (يوم/شهر/سنة)",
+        "title_input": "اللقب",
+        "title_input_placeholder": "سيد - سيدة - آنسة - دكتور - دكتورة",
+        "mobile": "رقم التليفون",
+        "mobile_placeholder": "+123456789",
+        "email": "البريد الالكترونى",
+        "email_placeholder": "example@email.com",
+        "gender": {
+          "label": "الجنس",
+          "placeholder": "ذكر / أنثى",
+          "male": "ذكر",
+          "female": "انثى"
+        },
+        "nationality": "الجنسية",
+        "nationality_placeholder": "مثال: سعودي",
+        "country_of_residence": "بلد الإقامة",
+        "country_of_residence_placeholder": "مثال: الإمارات العربية المتحدة",
+        "language": "اللغة المتحدثة بطلاقة",
+        "language_placeholder": " مثال: العربية، الإنجليزية",
+        "english": "الإنجليزية",
+        "arabic": "العربية",
+        "french": "الفرنسية",
+        "spanish": "الاسبانية",
+        "next": "الخطوة التالية"
+      },
+      "step3": {
+        "title": "2- المؤهلات العلمية",
+        "description": "رجاء ادخال جميع البيانات المطلوبة لاستكمال عملية التسجيل",
+        "academic_degree": {
+          "label": "أعلى درجة أكاديمية حصلت عليها",
+          "placeholder": "مثال: ماجستير",
+          "bachelor": "بكالوريوس",
+          "doctorate": "دكتوراة",
+          "master": "ماجستير"
+        },
+        "university": "الجامعة",
+        "university_label": "مثال: جامعة القاهرة",
+        "grad_year": "سنة التخرج",
+        "grad_year_placeholder": "01/05/1985 (يوم/شهر/سنة)",
+        "next": "الخطوة التالية",
+        "prev": "عودة"
+      },
+      "step4": {
+        "title": "3- المعلومات المهنية",
+        "description": "رجاء ادخال جميع البيانات المطلوبة لاستكمال عملية التسجيل",
+        "classification": {
+          "label": "التصنيف",
+          "placeholder": "مثال: طبيب نفسي",
+          "doctor": "طبيب",
+          "therapist": "اخصائى"
+        },
+        "specification": "التخصص",
+        "specification_placeholder": "مثال: علاج اضطرابات القلق",
+        "years_of_exp": "سنوات الخبرة",
+        "years_of_exp_placeholder": "مثال: 7 سنوات",
+        "license_no": "رقم الترخيص",
+        "license_no_placeholder": "مثال: 123456789",
+        "license_org": "منظمة الترخيص",
+        "license_org_placeholder": "مثال: هيئة التخصصات الصحية السعودية",
+        "work_on_clinic": {
+          "label": "هل تعمل بعيادة؟",
+          "placeholder": "نعم / لا",
+          "1": "نعم",
+          "0": "لا"
+        },
+        "next": "الخطوة التالية",
+        "prev": "عودة"
+      },
+      "step5": {
+        "title": "4- رفع المستندات",
+        "description": "رجاء ادخال جميع البيانات المطلوبة لاستكمال عملية التسجيل",
+        "cv": {
+          "label": "إرفاق السيرة الذاتية",
+          "placeholder": "اضغط لاختيار ملف أو اسحبه هنا"
+        },
+        "certificates": {
+          "label": "إرفاق شهادات معتمدة (شهادات التعليمية، الخبرة)",
+          "placeholder": "اضغط لاختيار ملف أو اسحبه هنا"
+        },
+        "num_of_qualifications": {
+          "label": "هل لديك أكثر من مؤهل ؟",
+          "placeholder": "نعم / لا",
+          "1": "نعم",
+          "0": "لا"
+        },
+        "next": "الخطوة التالية",
+        "prev": "عودة"
+      },
+      "step6": {
+        "title": "5- المراجعة والإرسال",
+        "description": "رجاء مراجعة جميع البيانات المطلوبة لاستكمال عملية التسجيل",
+        "step1_title": "المعلومات الشخصية",
+        "step2_title": "المؤهلات العلمية",
+        "step3_title": "المعلومات المهنية",
+        "step4_title": "المستندات",
+        "prev": "عودة",
+        "send": "ارسال البيانات",
+        "loading": "جارى الارسال..."
+      },
+      "stepper": {
+        "step1": "المعلومات الشخصية",
+        "step2": "المؤهلات التعليمية",
+        "step3": "المعلومات المهنية",
+        "step4": "رفع المستندات",
+        "step5": "المراجعة و الارسال"
+      },
+      "errors": {
+        "firstNameRequiredError": "الاسم الاول مطلوب",
+        "firstNameMinLengthError": "يجب أن لا تقل عدد الحروف في الاسم الأول عن 3",
+        "secondNameRequiredError": "الاسم الثانى مطلوب",
+        "secondNameMinLengthError": "يجب أن لا تقل عدد الحروف في الاسم الثانى عن 3",
+        "titleRequiredError": "اللقب مطلوب",
+        "titleMinLengthError": "يجب أن لا تقل عدد الحروف في اللقب عن 3",
+        "emailRequiredError": "البريد الإلكتروني مطلوب",
+        "emailInvalidError": "عذرا، هذا ليس بريدًا صحيحًا",
+        "mobileRequiredError": "رقم الجوال مطلوب",
+        "mobileInvalidError": "عذرا، هذا ليس رقمًا صحيحًا",
+        "dateOfBirthRequiredError": "تاريخ الميلاد مطلوب",
+        "dateOfBirthInvalidError": "عذرا، هذا ليس تاريخًا صحيحًا",
+        "genderRequiredError": "الجنس مطلوب",
+        "genderInvalidError": "عذرا، هذا ليس جنسًا صحيحًا",
+        "genderInvalidValueError": "عذرا، هذا ليس جنسًا صحيحًا",
+        "nationalityRequiredError": "الجنسية مطلوبة",
+        "countryOfResidenceRequiredError": "مدينة الإقامة مطلوبة",
+        "fluentLanguageRequiredError": "اللغة المتحدثة بطلاقة مطلوبة",
+        "fluentLanguageInvalidError": "عذرا، هذه ليست لغةً",
+        "highestDegreeRequiredError": "أعلى درجة اكاديمية حصلت عليها مطلوبة",
+        "highestDegreeInvalidError": "عذرا، هذه ليست درجةً صحيحة",
+        "universityRequiredError": "الجامعة مطلوبة",
+        "graduationYearRequiredError": "سنة التخرج مطلوبة",
+        "graduationYearInvalidError": "عذرا، هذه ليست سنةً صحيحة",
+        "classificationRequiredError": "التصنيف مطلوب",
+        "classificationInvalidTypeError": "من فضلك ادخل تصنيف صحيح",
+        "specificationRequiredError": "التخصص مطلوب",
+        "specificationInvalidError": "من فضلك ادخل تخصص صحيح",
+        "numberOfYearsOfExperienceRequiredError": "عدد سنوات الخبرة مطلوبة",
+        "numberOfYearsOfExperienceInvalidError": "من فضلك ادخل رقم سنوات خبرة صالح",
+        "licensingNumberRequiredError": "رقم الترخيص مطلوب",
+        "licensingNumberInvalidError": "من فضلك ادخل رقم ترخيص صالح",
+        "licensingAreaRequiredError": "من فضلك ادخل منظمة الترخيص",
+        "licensingAreaInvalidError": "من فضلك ادخل منظمة ترخيص صالحة",
+        "workOnClinicRequiredError": "من فضل ادخل اذا كنت تعمل فى عيادة ام لا",
+        "workOnClinicInvalidError": "برجاء اختيار قيمة صحيحة",
+        "cvInvalidTypeError": "من فضلك اختر ملف صالح",
+        "cvInvalidError": "من فضلك اختر ملف واحد فقط",
+        "certificatesInvalidError": "من فضلك اختر ملفات صالحة",
+        "hasMoreThanOneQualificationRequiredError": "من فضلك ادخل ان كنت تملك اكثر من مؤهل ام لا",
+        "hasMoreThanOneQualificationInvalidError": "من فضلك اختر قيمة صحيحة"
+      }
+    }
+  }
+}
