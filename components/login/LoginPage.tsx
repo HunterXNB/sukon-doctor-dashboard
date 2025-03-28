@@ -26,7 +26,11 @@ import { useTranslations } from "next-intl";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
-  return !email ? <LoginForm setEmail={setEmail} /> : <VerifyOTP />;
+  return !email ? (
+    <LoginForm key={"login"} setEmail={setEmail} />
+  ) : (
+    <VerifyOTP key={"verify"} />
+  );
 }
 const loginFormSchema = z.object({
   email: z
@@ -48,11 +52,12 @@ function LoginForm({ setEmail }: { setEmail: (email: string) => void }) {
   function onSubmit(value: LoginFormData) {
     console.log("submitted", value);
     setEmail(value.email);
+    window?.scrollTo?.(0, 0);
   }
 
   return (
-    <div className="flex flex-wrap p-6 md:p-8 gap-4 min-h-dvh flex-col md:flex-row justify-between">
-      <div className="md:p-8 p-0 max-md:min-h-dvh flex flex-col flex-1 ">
+    <div className="flex flex-wrap p-6 md:p-8 gap-4 min-h-screen flex-col md:flex-row justify-between">
+      <div className="md:p-8 p-0 max-md:min-h-screen flex flex-col flex-1 ">
         <Link href={"/"}>
           <Image src={LogoImg} alt="sukon" className="size-12 md:size-16" />
         </Link>
@@ -136,7 +141,7 @@ function LoginForm({ setEmail }: { setEmail: (email: string) => void }) {
           </Card>
         </div>
       </div>
-      <div className="flex-1 max-md:min-h-[calc(100dvh-48px)] flex flex-col overflow-hidden relative bg-primary rounded">
+      <div className="flex-1 max-md:min-h-[calc(100vh-48px)] flex flex-col overflow-hidden relative bg-primary rounded">
         <Image
           fill
           src={"/Ornament (1).svg"}
@@ -182,8 +187,8 @@ function VerifyOTP() {
     console.log("submitted", value);
   }
   return (
-    <div className="flex flex-wrap min-h-dvh flex-col md:flex-row justify-between">
-      <div className="md:p-16 p-6 max-md:min-h-dvh flex flex-col flex-1 ">
+    <div className="flex flex-wrap min-h-screen flex-col md:flex-row justify-between">
+      <div className="md:p-16 p-6 max-md:min-h-screen flex flex-col flex-1 ">
         <Link href={"/"}>
           <Image src={LogoImg} alt="sukon" className="size-12 md:size-16" />
         </Link>
@@ -266,7 +271,7 @@ function VerifyOTP() {
           </Card>
         </div>
       </div>
-      <div className="flex-1 max-md:min-h-dvh flex items-center justify-center overflow-hidden relative bg-[#f8f8f8]">
+      <div className="flex-1 max-md:min-h-screen flex items-center justify-center overflow-hidden relative bg-[#f8f8f8]">
         <Image src={VerifyImg} alt="verify gif" />
       </div>
     </div>
