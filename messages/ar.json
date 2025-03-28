@@ -197,5 +197,34 @@
         "hasMoreThanOneQualificationInvalidError": "من فضلك اختر قيمة صحيحة"
       }
     }
+  },
+  "loginPage": {
+    "loginForm": {
+      "title": "مرحباً مجدداً !",
+      "description": "من فضلك ادخل بياناتك لاستكمال تسجيل الدخول",
+      "emailLabel": "البريد الالكترونى",
+      "emailPlaceholder": "مطلوب",
+      "emailDescription": "لا حاجة لكلمة مرور",
+      "submitBtn": "أرسل رمز التحقق ",
+      "or": "أو",
+      "google": "جوجل",
+      "facebook": "فيسبوك",
+      "noAccount": "ليس لديك حساب؟ <a>إنشاء حساب</a>",
+      "hero": "لوحة تحكم متكاملة لإدارة مهامك بكل سهولة!",
+      "emailRequired": "من فضلك ادخل بريد الكترونى",
+      "emailInvalid": "ادخل بريد الكترونى صالح"
+    },
+    "verifyForm": {
+      "title": "التحقق من البريد الإلكتروني",
+      "description": "أدخل رمز التحقق المرسل إلى بريدك الإلكتروني",
+      "submitBtn": "تأكيد الرمز",
+      "resendCounter": {
+        "base": "لم يصلك رمز التحقق؟",
+        "counter": "{seconds} ثانية",
+        "link": "ارسال الان"
+      },
+      "otpRequired": "من فضلك ادخل رمز التحقق من 4 ارقام",
+      "otpInvalid": "ادخل رمز تحقق صالح"
+    }
   }
 }

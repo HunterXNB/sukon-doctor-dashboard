@@ -10,6 +10,12 @@ export default function Home() {
       <Button asChild variant={"link"}>
         <Link href={"/en/register"}>register form english</Link>
       </Button>
+      <Button asChild variant={"link"}>
+        <Link href={"/ar/login"}>login form arabic</Link>
+      </Button>
+      <Button asChild variant={"link"}>
+        <Link href={"/en/login"}>login form english</Link>
+      </Button>
     </div>
   );
 }

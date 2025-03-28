@@ -198,5 +198,34 @@
         "hasMoreThanOneQualificationInvalidError": "Please choose a valid option"
       }
     }
+  },
+  "loginPage": {
+    "loginForm": {
+      "title": "Welcome Back!",
+      "description": "Please enter your details to complete the login process",
+      "emailLabel": "Email",
+      "emailPlaceholder": "Required",
+      "emailDescription": "No password needed",
+      "submitBtn": "Send Verification Code",
+      "or": "Or",
+      "google": "Google",
+      "facebook": "Facebook",
+      "noAccount": "Don't have an account? <a>Sign Up</a>",
+      "hero": "A comprehensive dashboard to manage your tasks with ease!",
+      "emailRequired": "Please enter an email",
+      "emailInvalid": "Enter a valid email"
+    },
+    "verifyForm": {
+      "title": "Email Verification",
+      "description": "Enter the verification code sent to your email",
+      "submitBtn": "Confirm Code",
+      "resendCounter": {
+        "base": "Didn't receive the verification code?",
+        "counter": "{seconds} seconds",
+        "link": "Send Now"
+      },
+      "otpRequired": "Please enter a 4-digit verification code",
+      "otpInvalid": "Enter a valid verification code"
+    }
   }
 }
