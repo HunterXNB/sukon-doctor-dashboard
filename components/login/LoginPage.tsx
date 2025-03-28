@@ -161,10 +161,12 @@ function LoginForm({ setEmail }: { setEmail: (email: string) => void }) {
 }
 const verifyFormSchema = z.object({
   otp: z
-    .string()
+    .string({
+      required_error: "otpRequired",
+    })
     .trim()
-    .length(4, "من فضلك ادخل رمز التحقق من 4 ارقام")
-    .regex(/^\d{4}$/, "يجب ادخل رقم التحقق من 4 ارقام"),
+    .length(4, "otpRequired")
+    .regex(/^\d{4}$/, "otpInvalid"),
 });
 type VerifyFormData = z.infer<typeof verifyFormSchema>;
 function VerifyOTP() {
