@@ -226,5 +226,8 @@
       "otpRequired": "من فضلك ادخل رمز التحقق من 4 ارقام",
       "otpInvalid": "ادخل رمز تحقق صالح"
     }
+  },
+  "stepper": {
+    "text": "{current} من {total}"
   }
 }

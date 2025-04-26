@@ -71,6 +71,7 @@ function CertificatesInput() {
               onValueChange={field.onChange}
               dropzoneOptions={dropzone}
               reSelect={true}
+              orientation="horizontal"
             >
               <FileInput>
                 <div className="flex border border-dashed border-[#D1D1DB] rounded-[8px] items-center justify-center flex-col gap-2 py-6 w-full">
@@ -84,9 +85,10 @@ function CertificatesInput() {
                       key={i}
                       index={0}
                       aria-roledescription={`file ${1} containing ${file.name}`}
-                      className="pr-7"
                     >
-                      {file.name}
+                      <p className="w-full overflow-hidden truncate min-w-10">
+                        {file.name}
+                      </p>
                     </FileUploaderItem>
                   ))}
                 </FileUploaderContent>

@@ -13,7 +13,7 @@ function RegisterHero() {
   const t = useTranslations("registerPage.form.step1");
 
   return (
-    <div className="flex max-[850px]:flex-col-reverse min-h-dvh">
+    <div className="flex max-[850px]:flex-col min-h-dvh">
       <div className="min-[850px]:flex-1 min-h-dvh  flex justify-center py-10 px-8 items-center">
         <Card className="max-w-[590px] p-2 w-full">
           <CardHeader className="p-2">

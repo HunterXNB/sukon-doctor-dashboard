@@ -32,11 +32,13 @@ import { RegisterFormValues, step1RegisterSchema } from "@/schemas/register";
 import { useStepper } from "@/context/Register/StepperContext";
 import { useLocale, useTranslations } from "next-intl";
 import { register } from "@/actions/auth";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 const Step1 = ({
   state,
 }: {
   state: Awaited<ReturnType<typeof register>> | undefined;
 }) => {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const { watch, ...form } = useFormContext<RegisterFormValues>();
   const locale = useLocale();
   const { nextStep } = useStepper();
@@ -68,13 +70,17 @@ const Step1 = ({
   }, [watchedFields]);
   return (
     <div className="max-w-full">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-[#1d1f1f] text-2xl font-bold">{t("title")}</h2>
-        <p className="text-[#666666] ">{t("description")}</p>
-      </div>
-      <Separator className="mt-4 mb-6 bg-[#f7f7f8] h-[2px]" />
+      {isDesktop && (
+        <>
+          <div className="flex flex-col gap-2">
+            <h2 className="text-[#1d1f1f] text-2xl font-bold">{t("title")}</h2>
+            <p className="text-[#666666] ">{t("description")}</p>
+          </div>
+          <Separator className="mt-4 mb-6 bg-[#f7f7f8] h-[2px]" />
+        </>
+      )}
       <div className="space-y-6">
-        <div className="flex *:flex-1 justify-between gap-[25px]">
+        <div className="flex flex-wrap *:flex-1 *:min-w-56 justify-between gap-4">
           <FormField
             control={form.control}
             name="first_name"
@@ -108,7 +114,7 @@ const Step1 = ({
             )}
           />
         </div>
-        <div className="flex justify-between *:flex-1 gap-4">
+        <div className="flex flex-wrap justify-between *:min-w-56 *:flex-1 gap-4">
           <FormField
             control={form.control}
             name="date_of_birth"
@@ -125,7 +131,7 @@ const Step1 = ({
                         <Button
                           variant={"outline"}
                           className={cn(
-                            "w-full text-start justify-start  font-normal",
+                            "w-full text-start justify-start truncate font-normal",
                             !field.value && "text-muted-foreground"
                           )}
                         >
@@ -183,7 +189,7 @@ const Step1 = ({
             )}
           />
         </div>
-        <div className="flex justify-between gap-4 *:flex-1">
+        <div className="flex flex-wrap justify-between *:min-w-56 gap-4 *:flex-1">
           <FormField
             control={form.control}
             name="mobile"
@@ -222,7 +228,7 @@ const Step1 = ({
             )}
           />
         </div>
-        <div className="flex *:flex-1 justify-between gap-4">
+        <div className="flex flex-wrap *:flex-1 *:min-w-56 justify-between gap-4">
           <FormField
             control={form.control}
             name="gender"
@@ -276,7 +282,7 @@ const Step1 = ({
             )}
           />
         </div>
-        <div className="flex *:flex-1 justify-between gap-4 ">
+        <div className="flex flex-wrap *:min-w-56 *:flex-1 justify-between gap-4 ">
           <FormField
             control={form.control}
             name="country_of_residence"

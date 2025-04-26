@@ -53,13 +53,13 @@ function CVInput() {
   const form = useFormContext<RegisterFormValues>();
   const t = useTranslations("registerPage.form.step5.cv");
   return (
-    <div className="flex *:flex-1 justify-between gap-[25px]">
+    <div className="flex *:flex-1 max-w-full overflow-hidden justify-between gap-[25px]">
       <FormField
         control={form.control}
         name="cv"
         translation="registerPage.form.errors"
         render={({ field }) => (
-          <FormItem>
+          <FormItem className="max-w-full overflow-hidden">
             <FormLabel className="after:text-destructive text-sm after:content-['*']">
               {t("label")}
             </FormLabel>
@@ -68,22 +68,25 @@ function CVInput() {
               onValueChange={field.onChange}
               dropzoneOptions={dropzone}
               reSelect={true}
+              className="max-w-full overflow-hidden"
+              orientation="horizontal"
             >
               <FileInput>
-                <div className="flex border border-dashed border-[#D1D1DB] rounded-[8px] items-center justify-center flex-col gap-2 py-6 w-full">
+                <div className="flex border border-dashed border-[#D1D1DB] rounded-[8px] items-center justify-center flex-col gap-2 py-6 max-w-full w-full">
                   <FileSvgDraw />
                 </div>
               </FileInput>
               {field.value && (
-                <FileUploaderContent className="p-2 w-full -ml-3 rounded-b-none rounded-t-md flex-row gap-2 ">
+                <FileUploaderContent className="p-2 w-full rounded-b-none rounded-t-md max-w-full overflow-hidden flex-wrap flex-row gap-2 ">
                   {field.value.map((file, i) => (
                     <FileUploaderItem
                       key={i}
                       index={0}
                       aria-roledescription={`file ${1} containing ${file.name}`}
-                      className="pr-7"
                     >
-                      {file.name}
+                      <p className="w-full overflow-hidden truncate min-w-10">
+                        {file.name}
+                      </p>
                     </FileUploaderItem>
                   ))}
                 </FileUploaderContent>

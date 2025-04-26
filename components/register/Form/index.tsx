@@ -20,6 +20,8 @@ import Step5 from "./Step5";
 import { useFormServerError } from "@/hooks/useFormServerError";
 import { register } from "@/actions/auth";
 import { Link, useRouter } from "@/i18n/routing";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import MobileSteps from "./MobileSteps";
 
 // stepper context creation
 
@@ -83,6 +85,7 @@ const RegisterForm = React.memo(function RegisterForm() {
   );
 });
 const Form = () => {
+  const showLargeSteps = useMediaQuery("(min-width: 768px)");
   const t = useTranslations("registerPage.form.footer");
   const methods = useFormContext<RegisterFormValues>();
   const { handleSubmit } = methods;
@@ -140,8 +143,8 @@ const Form = () => {
   };
 
   return (
-    <div className="flex p-10 min-h-screen ">
-      <Steps />
+    <div className="flex p-10 flex-col md:flex-row min-h-screen ">
+      {showLargeSteps ? <Steps /> : <MobileSteps />}
       <div className="flex-1 h-fit">
         <Card className="w-full border-none p-[32px] shadow-[0_0_24px_0_rgba(0,0,0,.04)] h-full">
           <CardContent className="p-0">

@@ -8,6 +8,7 @@ import { RegisterFormValues } from "@/schemas/register";
 import { useStepper } from "@/context/Register/StepperContext";
 import { register } from "@/actions/auth";
 import { useLocale, useTranslations } from "next-intl";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const Step5 = ({
   isPending,
@@ -16,6 +17,7 @@ const Step5 = ({
   isPending: boolean;
   state: Awaited<ReturnType<typeof register>> | undefined;
 }) => {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const { getValues } = useFormContext<RegisterFormValues>();
   const locale = useLocale();
   const [formValues] = useState(() => getValues());
@@ -27,15 +29,19 @@ const Step5 = ({
   const t4 = useTranslations("registerPage.form.step5");
   return (
     <div className="max-w-full">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-[#1d1f1f] text-2xl font-bold">{t("title")}</h2>
-        <p className="text-[#666666] ">{t("description")}</p>
-      </div>
-      <Separator className="mt-4 mb-6 bg-[#f7f7f8] h-[2px]" />
+      {isDesktop && (
+        <>
+          <div className="flex flex-col gap-2">
+            <h2 className="text-[#1d1f1f] text-2xl font-bold">{t("title")}</h2>
+            <p className="text-[#666666] ">{t("description")}</p>
+          </div>
+          <Separator className="mt-4 mb-6 bg-[#f7f7f8] h-[2px]" />
+        </>
+      )}
 
       <div className="space-y-6">
         <h2 className="font-bold col-span-full">{t("step1_title")}</h2>
-        <div className="grid gap-x-2 grid-cols-1 gap-y-5 justify-between md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid *:overflow-hidden *:truncate gap-x-2 grid-cols-1 gap-y-5 justify-between md:grid-cols-2 lg:grid-cols-3">
           <p className="overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="font-bold">{t1("title_input")}: </span>
             {formValues.title}
@@ -81,7 +87,7 @@ const Step5 = ({
       <Separator className="mt-[32px] mb-6 bg-[#f7f7f8] h-[2px]" />
       <div className="space-y-6">
         <h2 className="font-bold col-span-full">{t("step2_title")}</h2>
-        <div className="grid gap-x-2 grid-cols-1 gap-y-5 justify-between md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid *:overflow-hidden *:truncate gap-x-2 grid-cols-1 gap-y-5 justify-between md:grid-cols-2 lg:grid-cols-3">
           <p className="overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="font-bold">{t2("university")}: </span>
             {formValues.university}
@@ -99,7 +105,7 @@ const Step5 = ({
       <Separator className="mt-[32px] mb-6 bg-[#f7f7f8] h-[2px]" />
       <div className="space-y-6">
         <h2 className="font-bold col-span-full">{t("step3_title")}</h2>
-        <div className="grid gap-x-2 grid-cols-1 gap-y-5 justify-between md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid *:overflow-hidden *:truncate gap-x-2 grid-cols-1 gap-y-5 justify-between md:grid-cols-2 lg:grid-cols-3">
           <p className="overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="font-bold">{t3("years_of_exp")}: </span>
             {formValues.number_of_years_of_experience}
@@ -132,13 +138,20 @@ const Step5 = ({
         <div className="flex flex-col gap-6">
           <div className="space-y-2">
             <p className="font-bold">{t4("cv.label")}</p>
-            <p>{formValues?.cv[0]?.name}</p>
+            <p className="overflow-hidden truncate max-w-full">
+              {formValues?.cv[0]?.name}
+            </p>
           </div>
           <div className="space-y-2">
             <p className="font-bold">{t4("certificates.label")}</p>
             <ul className="flex flex-col gap-2 px-1">
               {formValues.certificates.map((certificate) => (
-                <li key={certificate.name}>{certificate.name}</li>
+                <li
+                  className="overflow-hidden truncate max-w-full"
+                  key={certificate.name}
+                >
+                  {certificate.name}
+                </li>
               ))}
             </ul>
           </div>

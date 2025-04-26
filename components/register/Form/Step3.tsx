@@ -24,11 +24,13 @@ import { RegisterFormValues, step3RegisterSchema } from "@/schemas/register";
 import { useStepper } from "@/context/Register/StepperContext";
 import { register } from "@/actions/auth";
 import { useLocale, useTranslations } from "next-intl";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 const Step3 = ({
   state,
 }: {
   state: Awaited<ReturnType<typeof register>> | undefined;
 }) => {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const { watch, ...form } = useFormContext<RegisterFormValues>();
   const locale = useLocale();
   const { nextStep, prevStep } = useStepper();
@@ -60,15 +62,17 @@ const Step3 = ({
   }, [watchedFields]);
   return (
     <div className="max-w-full">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-[#1d1f1f] text-2xl font-bold">{t("title")}</h2>
-        <p className="text-[#666666] ">{t("description")}</p>
-      </div>
-      <Separator className="mt-4 mb-6 bg-[#f7f7f8] h-[2px]" />
-      {/* <Form {...form}> */}
+      {isDesktop && (
+        <>
+          <div className="flex flex-col gap-2">
+            <h2 className="text-[#1d1f1f] text-2xl font-bold">{t("title")}</h2>
+            <p className="text-[#666666] ">{t("description")}</p>
+          </div>
+          <Separator className="mt-4 mb-6 bg-[#f7f7f8] h-[2px]" />
+        </>
+      )}
       <div className="space-y-6">
-        {" "}
-        <div className="flex *:flex-1 justify-between gap-[25px]">
+        <div className="flex *:min-w-56 flex-wrap *:flex-1 justify-between gap-[25px]">
           <FormField
             control={form.control}
             name="classification"
