@@ -39,11 +39,11 @@ export const fieldToStepMap: Record<keyof RegisterFormValues, number> = {
   graduation_year: 2,
   highest_degree: 2,
   university: 2,
-  classification: 3,
+  role_id: 3,
   licensing_number: 3,
   licensing_area: 3,
   number_of_years_of_experience: 3,
-  specification: 3,
+  specifications: 3,
   work_on_clinic: 3,
   certificates: 4,
   cv: 4,
@@ -64,8 +64,8 @@ export const stepToFieldMap: Record<number, (keyof RegisterFormValues)[]> = {
   ],
   2: ["graduation_year", "highest_degree", "university"],
   3: [
-    "classification",
-    "specification",
+    "role_id",
+    "specifications",
     "licensing_number",
     "licensing_area",
     "number_of_years_of_experience",
@@ -122,21 +122,34 @@ const Form = () => {
   const onSubmit = async ({
     cv,
     certificates,
+    specifications,
     ...data
   }: RegisterFormValues) => {
     const formData = new FormData();
     for (const key in data) {
       formData.set(
         key,
-        data[key as keyof Omit<RegisterFormValues, "cv" | "certificates">]
+        data[
+          key as keyof Omit<
+            RegisterFormValues,
+            "cv" | "certificates" | "specifications"
+          >
+        ]
       );
     }
     formData.set("cv", cv[0]);
     for (const i in certificates) {
       formData.set(`certificates[${i}]`, certificates[i]);
     }
+    specifications.forEach((specification, i) =>
+      formData.set(
+        `specialization_ids[${i}]`,
+        specification.value?.toString?.()
+      )
+    );
     formData.set("qualifications", "bla bla bla");
     formData.set("clinic_address", "bla bla bla");
+
     startTransition(async () => {
       await action(formData);
     });

@@ -95,8 +95,9 @@
         "classification": {
           "label": "التصنيف",
           "placeholder": "مثال: طبيب نفسي",
-          "doctor": "طبيب",
-          "therapist": "اخصائى"
+          "doctor": "طبيب نفسي",
+          "therapist": "معالج نفسي إكلينيكي",
+          "counselor": "مرشد نفسي"
         },
         "specification": "التخصص",
         "specification_placeholder": "مثال: علاج اضطرابات القلق",
@@ -195,6 +196,11 @@
         "certificatesInvalidError": "من فضلك اختر ملفات صالحة",
         "hasMoreThanOneQualificationRequiredError": "من فضلك ادخل ان كنت تملك اكثر من مؤهل ام لا",
         "hasMoreThanOneQualificationInvalidError": "من فضلك اختر قيمة صحيحة"
+      },
+      "specializationsSelector": {
+        "placeholder": "مثال: الطب النفسى العام",
+        "error": "عذرا حدث خطأ ما",
+        "notSpecializations": "عذرا لا يوجد أي تخصصات حتى الآن"
       }
     }
   },

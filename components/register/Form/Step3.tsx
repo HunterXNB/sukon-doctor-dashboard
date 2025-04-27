@@ -25,6 +25,7 @@ import { useStepper } from "@/context/Register/StepperContext";
 import { register } from "@/actions/auth";
 import { useLocale, useTranslations } from "next-intl";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import SpecializationsSelector from "./SpecializationsSelector";
 const Step3 = ({
   state,
 }: {
@@ -75,7 +76,7 @@ const Step3 = ({
         <div className="flex *:min-w-56 flex-wrap *:flex-1 justify-between gap-[25px]">
           <FormField
             control={form.control}
-            name="classification"
+            name="role_id"
             translation="registerPage.form.errors"
             render={({ field }) => (
               <FormItem>
@@ -84,7 +85,7 @@ const Step3 = ({
                 </FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
+                  defaultValue={`${field.value}`}
                 >
                   <FormControl>
                     <SelectTrigger>
@@ -98,11 +99,14 @@ const Step3 = ({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="doctor">
+                    <SelectItem value="2">
                       {t("classification.doctor")}
                     </SelectItem>
-                    <SelectItem value="therapist">
+                    <SelectItem value="3">
                       {t("classification.therapist")}
+                    </SelectItem>
+                    <SelectItem value="4">
+                      {t("classification.counselor")}
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -112,7 +116,7 @@ const Step3 = ({
           />{" "}
           <FormField
             control={form.control}
-            name="specification"
+            name="specifications"
             translation="registerPage.form.errors"
             render={({ field }) => (
               <FormItem>
@@ -120,10 +124,7 @@ const Step3 = ({
                   {t("specification")}
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder={t("specification_placeholder")}
-                    {...field}
-                  />
+                  <SpecializationsSelector field={field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

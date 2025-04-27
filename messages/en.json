@@ -96,8 +96,9 @@
         "classification": {
           "label": "Classification",
           "placeholder": "Example: Psychiatrist",
-          "doctor": "Doctor",
-          "therapist": "Specialist"
+          "doctor": "Psychiatrist",
+          "therapist": "Clinical Psychologist",
+          "counselor": "Psychological Counselor"
         },
         "specification": "Specialization",
         "specification_placeholder": "Example: Anxiety Disorder Treatment",
@@ -196,6 +197,11 @@
         "certificatesInvalidError": "Please select valid files",
         "hasMoreThanOneQualificationRequiredError": "Please specify whether you have more than one qualification or not",
         "hasMoreThanOneQualificationInvalidError": "Please choose a valid option"
+      },
+      "specializationsSelector": {
+        "placeholder": "Example: General Psychiatry",
+        "error": "Sorry, something went wrong",
+        "noSpecializations": "Sorry, no specializations available yet"
       }
     }
   },
