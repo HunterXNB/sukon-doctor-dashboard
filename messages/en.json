@@ -230,5 +230,23 @@
   },
   "stepper": {
     "text": "{current} from {total}"
+  },
+  "landing": {
+    "header": {
+      "navigations": {
+        "home": "Home",
+        "about": "About Us",
+        "services": "Our Services",
+        "contact": "Contact Us"
+      },
+      "login": "Login",
+      "register": "Register"
+    },
+    "hero": {
+      "title": "Welcome to <span>Sukon</span> — Innovative Mental Health Solutions",
+      "description": "Manage your clinic easily with <span>Sukon</span>!",
+      "start": "Get Started",
+      "contact": "Contact Us"
+    }
   }
 }
