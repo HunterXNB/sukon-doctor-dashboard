@@ -252,6 +252,12 @@
       "description": "انطلق مع <span>سكون</span>.. لإدارة عيادتك بذكاء وسهولة!",
       "start": "إبدأ الآن",
       "contact": "تواصل معنا"
+    },
+    "stats": {
+      "internetSupport": "الدعم عبر الإنترنت",
+      "doctors": "أطباء",
+      "active": "المرضى النشطين",
+      "interested": "مهتم"
     }
   }
 }

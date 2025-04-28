@@ -253,6 +253,12 @@
       "description": "Manage your clinic easily with <span>Sukon</span>!",
       "start": "Get Started",
       "contact": "Contact Us"
+    },
+    "stats": {
+      "internetSupport": "Online Support",
+      "doctors": "Doctors",
+      "active": "Active Patients",
+      "interested": "Interested"
     }
   }
 }

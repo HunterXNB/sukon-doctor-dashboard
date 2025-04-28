@@ -25,7 +25,7 @@ async function Hero() {
               })}
             </p>
           </div>
-          <div className="flex max-md:justify-center gap-6 lg:gap-12 pb-4">
+          <div className="flex flex-wrap max-md:justify-center gap-6 lg:gap-12 pb-4">
             <Button className="text-2xl px-5 py-[6px]">{t("start")}</Button>
             <Button
               variant={"outline"}
@@ -35,10 +35,10 @@ async function Hero() {
             </Button>
           </div>
         </div>
-        <div className="relative hidden md:block">
+        <div className="relative  hidden md:block">
           <Image
             src={HeroIMG}
-            className="object-cover ltr:-scale-x-100"
+            className="w-full  object-cover portrait:object-contain ltr:-scale-x-100"
             fill
             alt="Sukon"
           />
