@@ -112,11 +112,17 @@ const Step5 = ({
           </p>
           <p className="overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="font-bold">{t3("classification.label")}: </span>
-            {t3(`classification.${formValues.classification}`)}
+            {t3(
+              `classification.${
+                { 2: "doctor", 3: "therapist", 4: "counselor" }[
+                  formValues.role_id
+                ]
+              }`
+            )}
           </p>
           <p className="overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="font-bold">{t3("specification")}: </span>
-            {formValues.specification}
+            {formValues.specifications.map((spec) => spec.label).join(", ")}
           </p>
           <p className="overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="font-bold">{t3("work_on_clinic.label")}: </span>
