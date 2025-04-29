@@ -213,6 +213,7 @@
       "emailPlaceholder": "Required",
       "emailDescription": "No password needed",
       "submitBtn": "Send Verification Code",
+      "submitLoading": "Sending OTP...",
       "or": "Or",
       "google": "Google",
       "facebook": "Facebook",

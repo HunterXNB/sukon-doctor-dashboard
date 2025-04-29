@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { IBM_Plex_Sans_Arabic } from "next/font/google";
+import { Toaster } from "sonner";
+import TanStackQueryClientProvider from "@/components/Providers/QueryClientProvider";
 
 const IBM = IBM_Plex_Sans_Arabic({
   subsets: ["arabic", "latin"],
@@ -42,7 +44,12 @@ export default async function LocaleLayout({
     <html dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
       <body className={`${IBM.className} antialiased`}>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <TanStackQueryClientProvider>
+            {children}
+            <Toaster
+              position={locale === "ar" ? "bottom-left" : "bottom-right"}
+            />
+          </TanStackQueryClientProvider>
         </NextIntlClientProvider>
       </body>
     </html>

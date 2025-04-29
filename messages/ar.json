@@ -212,6 +212,7 @@
       "emailPlaceholder": "مطلوب",
       "emailDescription": "لا حاجة لكلمة مرور",
       "submitBtn": "أرسل رمز التحقق ",
+      "submitLoading": "جارى ارسال الرمز...",
       "or": "أو",
       "google": "جوجل",
       "facebook": "فيسبوك",

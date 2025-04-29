@@ -19,17 +19,20 @@ import { Button } from "../ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { ArrowLeft } from "lucide-react";
-import { Separator } from "../ui/separator";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "../ui/input-otp";
 import { useTranslations } from "next-intl";
+import { fetchData } from "@/lib/utils";
+import { toast } from "sonner";
+import useLogin from "@/hooks/useLogin";
+import { useRouter } from "next/navigation";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   return !email ? (
     <LoginForm key={"login"} setEmail={setEmail} />
   ) : (
-    <VerifyOTP key={"verify"} />
+    <VerifyOTP email={email} key={"verify"} />
   );
 }
 const loginFormSchema = z.object({
@@ -38,6 +41,7 @@ const loginFormSchema = z.object({
       required_error: "emailRequired",
     })
     .email("emailInvalid"),
+  type: z.literal("Provider"),
 });
 type LoginFormData = z.infer<typeof loginFormSchema>;
 
@@ -45,14 +49,32 @@ function LoginForm({ setEmail }: { setEmail: (email: string) => void }) {
   const form = useForm<LoginFormData>({
     defaultValues: {
       email: "",
+      type: "Provider",
     },
     resolver: zodResolver(loginFormSchema),
   });
   const t = useTranslations("loginPage.loginForm");
-  function onSubmit(value: LoginFormData) {
-    console.log("submitted", value);
-    setEmail(value.email);
-    window?.scrollTo?.(0, 0);
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function onSubmit(value: LoginFormData) {
+    try {
+      setIsLoading(true);
+      const req = await fetchData("/auth/login", {
+        method: "POST",
+        body: JSON.stringify(value),
+      });
+      if (!req.ok) throw await req.json();
+      const res = (await req.json()) as { message: string };
+      toast(res.message);
+      setEmail(value.email);
+      window?.scrollTo?.(0, 0);
+    } catch (error) {
+      if (typeof error === "object" && error !== null && "message" in error) {
+        if (typeof error.message === "string") toast(error.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -97,37 +119,21 @@ function LoginForm({ setEmail }: { setEmail: (email: string) => void }) {
                       </FormItem>
                     )}
                   />
-                  <Button className="w-full" type="submit">
-                    {t("submitBtn")} <ArrowLeft className="ltr:-scale-x-100" />
+                  <Button disabled={isLoading} className="w-full" type="submit">
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="animate-spin" />
+                        {t("submitLoading")}
+                      </>
+                    ) : (
+                      <>
+                        {t("submitBtn")}
+                        <ArrowLeft className="ltr:-scale-x-100" />
+                      </>
+                    )}
                   </Button>
                 </form>
               </Form>
-              <div className="flex justify-center items-center relative">
-                <Separator className="bg-[#A9A9BC] z-0 absolute" />
-                <p className="bg-white z-10 px-[6px] text-[#A9A9BC]">
-                  {t("or")}
-                </p>
-              </div>
-              <div className="flex gap-4">
-                <Button className="flex-1" variant={"outline"}>
-                  <Image
-                    src={"/google.svg"}
-                    alt="google"
-                    width={24}
-                    height={24}
-                  />
-                  {t("google")}
-                </Button>
-                <Button className="flex-1" variant={"outline"}>
-                  <Image
-                    src={"/facebook.svg"}
-                    alt="facebook"
-                    width={24}
-                    height={24}
-                  />
-                  {t("facebook")}
-                </Button>
-              </div>
               <div className="text-sm text-[#ABABAB] text-center">
                 {t.rich("noAccount", {
                   a: (c) => (
@@ -165,26 +171,50 @@ function LoginForm({ setEmail }: { setEmail: (email: string) => void }) {
   );
 }
 const verifyFormSchema = z.object({
-  otp: z
+  code: z
     .string({
       required_error: "otpRequired",
     })
     .trim()
     .length(4, "otpRequired")
     .regex(/^\d{4}$/, "otpInvalid"),
+  email: z.string().email(),
+  is_changed: z.literal(false),
+  type: z.literal("Provider"),
 });
 type VerifyFormData = z.infer<typeof verifyFormSchema>;
-function VerifyOTP() {
+function VerifyOTP({ email }: { email: string }) {
+  const { mutate } = useLogin();
+  const router = useRouter();
   const form = useForm<VerifyFormData>({
     defaultValues: {
-      otp: "",
+      code: "",
+      email,
+      is_changed: false,
+      type: "Provider",
     },
     resolver: zodResolver(verifyFormSchema),
   });
   const t = useTranslations("loginPage.verifyForm");
   const [disabled, setDisabled] = useState(true);
   function onSubmit(value: VerifyFormData) {
-    console.log("submitted", value);
+    mutate(value, {
+      onError: (error) => {
+        if ("status_code" in error) {
+          if (error.status_code === 422) {
+            form.setError("code", {
+              message: error.message,
+              type: "validation",
+            });
+          }
+        }
+        toast(error.message);
+      },
+      onSuccess: (data) => {
+        toast(data.message);
+        router.push("/dashboard");
+      },
+    });
   }
   return (
     <div className="flex flex-wrap min-h-screen flex-col md:flex-row justify-between">
@@ -206,8 +236,8 @@ function VerifyOTP() {
                 >
                   <FormField
                     control={form.control}
-                    name="otp"
-                    translation="login.form"
+                    name="code"
+                    translation="loginPage.verifyForm"
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
@@ -216,7 +246,7 @@ function VerifyOTP() {
                             {...field}
                             onChange={async (e) => {
                               try {
-                                await verifyFormSchema.shape.otp.parse(
+                                await verifyFormSchema.shape.code.parse(
                                   e.toString()
                                 );
                                 if (disabled) setDisabled(false);
@@ -256,7 +286,7 @@ function VerifyOTP() {
                     )}
                   />
                   <div className="space-y-4">
-                    <ResendCounter />
+                    <ResendCounter email={email} />
                     <Button
                       disabled={disabled}
                       className="w-full"
@@ -278,9 +308,10 @@ function VerifyOTP() {
   );
 }
 
-function ResendCounter() {
+function ResendCounter({ email }: { email: string }) {
   const [seconds, setSeconds] = useState(30);
   const t = useTranslations("loginPage.verifyForm.resendCounter");
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
       if (seconds === 0) return clearTimeout(timer);
@@ -300,9 +331,33 @@ function ResendCounter() {
       ) : (
         <Button
           type="button"
-          onClick={() => setSeconds(30)}
+          onClick={async () => {
+            try {
+              setIsLoading(true);
+              const req = await fetchData("/auth/login", {
+                method: "POST",
+                body: JSON.stringify({ email, type: "Provider" }),
+              });
+              if (!req.ok) throw await req.json();
+              const res = (await req.json()) as { message: string };
+              toast(res.message);
+              setSeconds(30);
+              window?.scrollTo?.(0, 0);
+            } catch (error) {
+              if (
+                typeof error === "object" &&
+                error !== null &&
+                "message" in error
+              ) {
+                if (typeof error.message === "string") toast(error.message);
+              }
+            } finally {
+              setIsLoading(false);
+            }
+          }}
           variant={"link"}
-          className="p-0 inline m-0"
+          className="p-0 inline m-0 disabled:animate-caret-blink"
+          disabled={isLoading}
         >
           {t("link")}
         </Button>

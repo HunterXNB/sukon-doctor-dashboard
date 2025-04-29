@@ -3,6 +3,9 @@ import { fetchData } from "@/lib/utils";
 import { RegisterFormValues } from "@/schemas/register";
 import { ActionStateResult } from "@/types/action-state";
 import { getLocale } from "./intl";
+import { redirect } from "@/i18n/routing";
+import { cookies } from "next/headers";
+import { UserProfile } from "@/types/User";
 type RegisterFields = keyof RegisterFormValues;
 export async function register(
   state: ActionStateResult<RegisterFields> | undefined,
@@ -16,7 +19,7 @@ export async function register(
       method: "POST",
       body: userData,
     },
-    { formData: true }
+    { formData: true, fromLogin: true }
   );
 
   const res = await req.json();
@@ -46,4 +49,51 @@ export async function register(
     },
     locale,
   };
+}
+export async function handleUnauthenticated() {
+  const locale = await getLocale();
+  return redirect({ href: "/login", locale });
+}
+
+export async function handleForbidden() {
+  const locale = await getLocale();
+  return redirect({
+    href: "/",
+    locale,
+  });
+}
+export async function getUserToken() {
+  const cookieStore = await cookies();
+  return cookieStore.get("token")?.value;
+}
+
+export async function setAuthToken(token: string) {
+  (await cookies()).set("token", token, {
+    path: "/",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    httpOnly: true,
+  });
+}
+export async function isAuthenticated() {
+  const token = await getUserToken();
+  if (token) {
+    const req = await fetchData(`/auth/view-profile`, undefined, {
+      formData: false,
+      fromLogin: true,
+    });
+    if (req.ok) {
+      const res = (await req.json()).data.user as UserProfile;
+
+      return {
+        is_active: res.is_active,
+        is_role_active: res.role.is_active,
+        registration_status: res.registration_status,
+      } as {
+        is_active: boolean;
+        is_role_active: boolean;
+        registration_status: "pending" | "approved" | "rejected";
+      };
+    }
+  }
+  return null;
 }
