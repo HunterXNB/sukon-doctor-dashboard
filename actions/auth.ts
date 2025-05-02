@@ -109,3 +109,10 @@ export async function logout() {
     locale,
   });
 }
+export async function getUser() {
+  const req = await fetchData(`/auth/view-profile`);
+  if (req.ok) {
+    return (await req.json()).data.user as UserProfile;
+  }
+  return;
+}
