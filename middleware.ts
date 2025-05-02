@@ -3,7 +3,7 @@ import { routing } from "./i18n/routing";
 
 import { NextRequest, NextResponse } from "next/server";
 import { isAuthenticated } from "./actions/auth";
-const protectedRoutes = ["/dashboard"];
+const protectedRoutes = ["/dashboard", "/approval-waiting"];
 export default async function middleware(req: NextRequest) {
   const authenticated = await isAuthenticated();
   const pathname =
@@ -27,17 +27,23 @@ export default async function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL("/login", req.nextUrl));
       }
       if (
-        authenticated?.registration_status === "pending" ||
-        authenticated?.registration_status === "rejected"
+        (authenticated?.registration_status === "pending" ||
+          authenticated?.registration_status === "rejected") &&
+        pathname !== "/approval-waiting"
       )
         return NextResponse.redirect(new URL("/approval-waiting", req.nextUrl));
+      if (
+        authenticated?.registration_status === "approved" &&
+        pathname === "/approval-waiting"
+      )
+        return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
+      if (
+        authenticated &&
+        !(authenticated.is_active && authenticated.is_role_active) &&
+        pathname !== "/dashboard"
+      )
+        return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
     }
-    if (
-      authenticated &&
-      !(authenticated.is_active && authenticated.is_role_active) &&
-      pathname !== "/dashboard"
-    )
-      return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
   }
   return createMiddleware(routing)(req);
 }

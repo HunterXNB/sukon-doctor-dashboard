@@ -261,5 +261,10 @@
       "active": "Active Patients",
       "interested": "Interested"
     }
+  },
+  "waitingApprovalPage": {
+    "title": "Your request is under review",
+    "description": "Your request has been received and will be reviewed by the Sukon team. You will receive a notification once it is approved.",
+    "logoutBtn": "Logout"
   }
 }

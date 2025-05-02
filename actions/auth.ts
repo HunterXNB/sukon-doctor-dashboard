@@ -97,3 +97,15 @@ export async function isAuthenticated() {
   }
   return null;
 }
+
+export async function logout() {
+  const cookieStore = await cookies();
+  const locale = await getLocale();
+
+  await fetchData("/auth/logout", { method: "POST" });
+  cookieStore.delete("token");
+  return redirect({
+    href: "/login",
+    locale,
+  });
+}
