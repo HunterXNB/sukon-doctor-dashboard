@@ -266,5 +266,24 @@
     "title": "Your request is under review",
     "description": "Your request has been received and will be reviewed by the Sukon team. You will receive a notification once it is approved.",
     "logoutBtn": "Logout"
+  },
+  "sidebar": {
+    "nav": {
+      "home": "Home",
+      "appointments": "Appointments",
+      "appointments-reservations": "Reservation Appointments",
+      "patients-list": "Patient List",
+      "messages": "Messages",
+      "financial-reports": "Financial Reports",
+      "articles": "Educational Articles",
+      "app-data": "App Data",
+      "contact-us": "Contact Us",
+      "settings": "Settings"
+    },
+    "main": {
+      "title": "Sukon",
+      "dashboard-title": "Dashboard",
+      "settings-title": "Settings"
+    }
   }
 }

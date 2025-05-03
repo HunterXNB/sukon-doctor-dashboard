@@ -200,7 +200,7 @@
       "specializationsSelector": {
         "placeholder": "مثال: الطب النفسى العام",
         "error": "عذرا حدث خطأ ما",
-        "notSpecializations": "عذرا لا يوجد أي تخصصات حتى الآن"
+        "noSpecializations": "عذرا لا يوجد أي تخصصات حتى الآن"
       }
     }
   },
@@ -265,5 +265,24 @@
     "title": "طلبك قيد المراجعة",
     "description": "تم استلام طلبك وسيتم مراجعته من قبل فريق سكون، ستتلقى إشعارًا فور الموافقة.",
     "logoutBtn": "تسجيل الخروج"
+  },
+  "sidebar": {
+    "nav": {
+      "home": "الرئيسية",
+      "appointments": "المواعيد",
+      "appointments-reservations": "مواعيد الحجوزات",
+      "patients-list": "قائمة الحالات",
+      "messages": "الرسائل",
+      "financial-reports": "التقارير المالية",
+      "articles": "المقالات التعليمية",
+      "app-data": "بيانات التطبيق",
+      "contact-us": "تواصل معنا",
+      "settings": "الإعدادات"
+    },
+    "main": {
+      "title": "سكون",
+      "dashboard-title": "لوحة التحكم",
+      "settings-title": "الإعدادات"
+    }
   }
 }

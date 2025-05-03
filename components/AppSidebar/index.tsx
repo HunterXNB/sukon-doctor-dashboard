@@ -1,5 +1,4 @@
-"use client";
-import React, { ReactNode } from "react";
+import React from "react";
 import {
   Sidebar,
   SidebarContent,
@@ -7,37 +6,20 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarTrigger,
-} from "./ui/sidebar";
-import { Link, usePathname } from "@/i18n/routing";
+} from "../ui/sidebar";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import Logo from "@/assets/sidebar-logo.svg";
 import { CalendarDays, IndentDecrease, MessageCircleMore } from "lucide-react";
-import { cn } from "@/lib/utils";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "./ui/collapsible";
-type NavItem = {
-  label: string;
-  href: string;
-  icon: ReactNode;
-} & (
-  | {
-      type: "link";
-    }
-  | { type: "group"; children: NavItem[] }
-);
+
+import NavigationList from "./NavigationList";
+import { NavItem } from "@/types/nav";
+import { getTranslations } from "next-intl/server";
+
 const DASHBOARD_LINKS: NavItem[] = [
   {
-    label: "الرئيسية",
+    label: "home",
     type: "link",
     href: "/dashboard",
     icon: (
@@ -57,13 +39,13 @@ const DASHBOARD_LINKS: NavItem[] = [
     ),
   },
   {
-    label: "المواعيد",
+    label: "appointments",
     type: "group",
     href: "/dashboard/appointments",
     icon: <CalendarDays width={24} height={24} />,
     children: [
       {
-        label: "مواعيد الحجوزات",
+        label: "appointments-reservations",
         type: "link",
         href: "/dashboard/appointments/reservations",
         icon: (
@@ -77,6 +59,7 @@ const DASHBOARD_LINKS: NavItem[] = [
             <path
               d="M9.13478 20.7733V17.7156C9.13478 16.9351 9.77217 16.3023 10.5584 16.3023H13.4326C13.8102 16.3023 14.1723 16.4512 14.4393 16.7163C14.7063 16.9813 14.8563 17.3408 14.8563 17.7156V20.7733C14.8539 21.0978 14.9821 21.4099 15.2124 21.6402C15.4427 21.8705 15.7561 22 16.0829 22H18.0438C18.9596 22.0023 19.8388 21.6428 20.4872 21.0008C21.1356 20.3588 21.5 19.487 21.5 18.5778V9.86686C21.5 9.13246 21.1721 8.43584 20.6046 7.96467L13.934 2.67587C12.7737 1.74856 11.1111 1.7785 9.98539 2.74698L3.46701 7.96467C2.87274 8.42195 2.51755 9.12064 2.5 9.86686V18.5689C2.5 20.4639 4.04738 22 5.95617 22H7.87229C8.55123 22 9.103 21.4562 9.10792 20.7822L9.13478 20.7733Z"
               fill="#6C6C89"
+              className="fill-path"
             />
           </svg>
         ),
@@ -84,9 +67,9 @@ const DASHBOARD_LINKS: NavItem[] = [
     ],
   },
   {
-    label: "قائمة الحالات",
+    label: "patients-list",
     type: "link",
-    href: "/dashboard/akaj",
+    href: "/dashboard/patients-list",
     icon: (
       <svg
         width="22"
@@ -149,13 +132,13 @@ const DASHBOARD_LINKS: NavItem[] = [
     ),
   },
   {
-    label: "الرسائل",
+    label: "messages",
     type: "link",
     href: "/dashboard/messages",
     icon: <MessageCircleMore width={24} height={24} />,
   },
   {
-    label: "التقارير المالية",
+    label: "financial-reports",
     type: "link",
     href: "/dashboard/financial-reports",
     icon: (
@@ -202,7 +185,7 @@ const DASHBOARD_LINKS: NavItem[] = [
     ),
   },
   {
-    label: "المقالات التعليمية",
+    label: "articles",
     type: "link",
     href: "/dashboard/articles",
     icon: (
@@ -237,9 +220,9 @@ const DASHBOARD_LINKS: NavItem[] = [
 ];
 const SETTINGS_LINKS: NavItem[] = [
   {
-    label: "بيانات التطبيق",
+    label: "app-data",
     type: "link",
-    href: "/dashboard/app-settings",
+    href: "/dashboard/app-data",
     icon: (
       <svg
         width="12"
@@ -259,7 +242,7 @@ const SETTINGS_LINKS: NavItem[] = [
     ),
   },
   {
-    label: "تواصل معنا",
+    label: "contact-us",
     type: "link",
     href: "/dashboard/contact-us",
     icon: (
@@ -271,8 +254,8 @@ const SETTINGS_LINKS: NavItem[] = [
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M7.41729 8.08564C10.2516 10.9192 10.8946 7.64109 12.6993 9.44447C14.4391 11.1838 15.439 11.5323 13.2347 13.736C12.9586 13.9579 11.2043 16.6275 5.03906 10.464C-1.12695 4.29968 1.54113 2.54358 1.76308 2.26754C3.97275 0.0577326 4.31522 1.06351 6.05503 2.80284C7.85968 4.60698 4.58294 5.25208 7.41729 8.08564Z"
           stroke="#6C6C89"
           strokeWidth="1.5"
@@ -283,7 +266,7 @@ const SETTINGS_LINKS: NavItem[] = [
     ),
   },
   {
-    label: "الإعدادات",
+    label: "settings",
     type: "link",
     href: "/dashboard/settings",
     icon: (
@@ -310,123 +293,36 @@ const SETTINGS_LINKS: NavItem[] = [
     ),
   },
 ];
-function AppSidebar() {
+async function AppSidebar() {
+  const t = await getTranslations("sidebar.main");
   return (
     <Sidebar>
       <SidebarHeader className="flex items-center flex-row p-5 gap-[10px] rtl:pl-4 ltr:pr-4">
         <Link href={"/"}>
           <Image src={Logo} alt="Sukoon" />
         </Link>
-        <h1 className="text-[22px] text-[#282833] flex-1 font-bold">سكون</h1>
+        <h1 className="text-[22px] text-[#282833] flex-1 font-bold">
+          {t("title")}
+        </h1>
         <SidebarTrigger className="hover:bg-transparent text-gray-500 hover:text-primary transition-all duration-300 ">
           <IndentDecrease className="rtl:-scale-x-100 !size-6" />
         </SidebarTrigger>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>لوحة التحكم</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("dashboard-title")}</SidebarGroupLabel>
           <SidebarGroupContent>
             <NavigationList items={DASHBOARD_LINKS} />
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel>الإعدادات</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("settings-title")}</SidebarGroupLabel>
           <SidebarGroupContent>
             <NavigationList items={SETTINGS_LINKS} />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  );
-}
-function NavigationList({ items }: { items: NavItem[] }) {
-  return (
-    <SidebarMenu>
-      {items.map((item) => (
-        <NavigationItem key={item.label} item={item} />
-      ))}
-    </SidebarMenu>
-  );
-}
-function NavigationItem({
-  item,
-  nested = false,
-}: {
-  item: NavItem;
-  nested?: boolean;
-}) {
-  const pathname = usePathname();
-  console.log(pathname);
-
-  if (item.type === "link" && nested)
-    return (
-      <SidebarMenuSubItem>
-        <SidebarMenuSubButton
-          className={cn(
-            "hover:bg-primary-50 hover:text-primary [&_svg]:text-[#6C6C89] [&_svg]:hover:text-primary [&_.fill-path]:hover:fill-primary [&_path:not(.fill-path)]:hover:stroke-primary",
-            {
-              "bg-primary-50 text-primary [&_svg]:text-primary [&_.fill-path]:fill-primary [&_path:not(.fill-path)]:stroke-primary":
-                pathname === item.href,
-            }
-          )}
-          asChild
-        >
-          <Link href={item.href}>
-            {item.icon}
-            <span>{item.label}</span>
-          </Link>
-        </SidebarMenuSubButton>
-      </SidebarMenuSubItem>
-    );
-  if (item.type === "group")
-    return (
-      <Collapsible className="group/collapsible">
-        <SidebarMenuItem>
-          <CollapsibleTrigger asChild>
-            <SidebarMenuButton
-              className={cn(
-                "hover:bg-primary-50 hover:text-primary cursor-pointer select-none [&_svg]:text-[#6C6C89] [&_svg]:hover:text-primary [&_.fill-path]:hover:fill-primary [&_path:not(.fill-path)]:hover:stroke-primary",
-                {
-                  "bg-primary-50 text-primary [&_svg]:text-primary [&_.fill-path]:fill-primary [&_path:not(.fill-path)]:stroke-primary":
-                    pathname.startsWith(item.href),
-                }
-              )}
-              asChild
-            >
-              <div>
-                {item.icon}
-                <span>{item.label}</span>
-              </div>
-            </SidebarMenuButton>
-          </CollapsibleTrigger>
-          <CollapsibleContent>
-            <SidebarMenuSub>
-              {item.children.map((subItem) => (
-                <NavigationItem key={subItem.label} item={subItem} nested />
-              ))}
-            </SidebarMenuSub>
-          </CollapsibleContent>
-        </SidebarMenuItem>
-      </Collapsible>
-    );
-  return (
-    <SidebarMenuItem key={item.label}>
-      <SidebarMenuButton
-        className={cn(
-          "hover:bg-primary-50 hover:text-primary [&_svg]:text-[#6C6C89] [&_svg]:hover:text-primary [&_.fill-path]:hover:fill-primary [&_path:not(.fill-path)]:hover:stroke-primary",
-          {
-            "bg-primary-50 text-primary [&_svg]:text-primary [&_.fill-path]:fill-primary [&_path:not(.fill-path)]:stroke-primary":
-              pathname === item.href,
-          }
-        )}
-        asChild
-      >
-        <Link href={item.href}>
-          {item.icon}
-          <span>{item.label}</span>
-        </Link>
-      </SidebarMenuButton>
-    </SidebarMenuItem>
   );
 }
 

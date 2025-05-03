@@ -134,7 +134,7 @@ const Step3 = ({
         <div className="flex justify-between *:flex-1 gap-4">
           <FormField
             control={form.control}
-            name="number_of_years_of_experience"
+            name="years_of_experience"
             translation="registerPage.form.errors"
             render={({ field }) => (
               <FormItem>

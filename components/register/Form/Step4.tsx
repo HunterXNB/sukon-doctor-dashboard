@@ -73,7 +73,7 @@ const Step4 = ({
         </>
       )}
       {/* <Form {...form}> */}
-      <div className="space-y-6 max-w-full overflow-hidden">
+      <div className="space-y-6 max-w-full">
         <CVInput />
         <CertificatesInput />
         <div className="flex *:flex-1 justify-between gap-[25px]">

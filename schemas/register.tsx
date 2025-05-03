@@ -105,7 +105,7 @@ export const RegisterSchema = z.object({
   //     required_error: "specificationRequiredError",
   //   })
   //   .min(3, "specificationInvalidError"),
-  number_of_years_of_experience: z.coerce
+  years_of_experience: z.coerce
     .number({ required_error: "numberOfYearsOfExperienceRequiredError" })
     .min(1, "numberOfYearsOfExperienceInvalidError")
     .transform((val) => val.toString()),
@@ -167,7 +167,7 @@ export type Step2RegisterFormValues = z.infer<typeof step2RegisterSchema>;
 export const step3RegisterSchema = RegisterSchema.pick({
   role_id: true,
   specifications: true,
-  number_of_years_of_experience: true,
+  years_of_experience: true,
   licensing_area: true,
   licensing_number: true,
   work_on_clinic: true,

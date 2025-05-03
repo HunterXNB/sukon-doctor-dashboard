@@ -10,7 +10,10 @@ type RegisterFields = keyof RegisterFormValues;
 export async function register(
   state: ActionStateResult<RegisterFields> | undefined,
   userData: FormData
-): Promise<ActionStateResult<RegisterFields>> {
+): Promise<
+  | ActionStateResult<RegisterFields>
+  | { success: { message: string }; locale: "en" | "ar"; token: string }
+> {
   const locale = await getLocale();
 
   const req = await fetchData(
@@ -23,8 +26,18 @@ export async function register(
   );
 
   const res = await req.json();
+
   if (!req.ok) {
     if (req.status === 422) {
+      const certificatesErrors = Object.keys(res.errors).filter((el) =>
+        el.startsWith("certificates")
+      );
+      if (certificatesErrors.length > 0) {
+        res.errors["certificates"] = res.errors[certificatesErrors[0]];
+        for (const key of certificatesErrors) {
+          delete res.errors[key];
+        }
+      }
       return {
         error: {
           type: "validation",
@@ -48,6 +61,7 @@ export async function register(
       message: res.message,
     },
     locale,
+    token: res.data.token,
   };
 }
 export async function handleUnauthenticated() {

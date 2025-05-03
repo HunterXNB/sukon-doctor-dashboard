@@ -18,7 +18,7 @@ import RegisterFormContextProvider from "@/context/Register/FormContext";
 import Step5 from "./Step5";
 // import { register } from "@/actions/auth";
 import { useFormServerError } from "@/hooks/useFormServerError";
-import { register } from "@/actions/auth";
+import { register, setAuthToken } from "@/actions/auth";
 import { Link, useRouter } from "@/i18n/routing";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import MobileSteps from "./MobileSteps";
@@ -42,7 +42,7 @@ export const fieldToStepMap: Record<keyof RegisterFormValues, number> = {
   role_id: 3,
   licensing_number: 3,
   licensing_area: 3,
-  number_of_years_of_experience: 3,
+  years_of_experience: 3,
   specifications: 3,
   work_on_clinic: 3,
   certificates: 4,
@@ -68,7 +68,7 @@ export const stepToFieldMap: Record<number, (keyof RegisterFormValues)[]> = {
     "specifications",
     "licensing_number",
     "licensing_area",
-    "number_of_years_of_experience",
+    "years_of_experience",
     "work_on_clinic",
   ],
   4: ["cv", "has_more_than_one_qualification", "certificates"],
@@ -113,9 +113,16 @@ const Form = () => {
   }, [state, setStep]);
   useEffect(() => {
     if (state && "success" in state) {
-      localStorage.removeItem("form_values");
-      localStorage.removeItem("form_step");
-      router.push("/");
+      async function handleSuccess() {
+        localStorage.removeItem("form_values");
+        localStorage.removeItem("form_step");
+        if (state && "token" in state) {
+          await setAuthToken(state.token);
+          return router.replace("/dashboard");
+        }
+        router.push("/");
+      }
+      startTransition(handleSuccess);
     }
   }, [state, setStep, router]);
   useFormServerError(methods, state);

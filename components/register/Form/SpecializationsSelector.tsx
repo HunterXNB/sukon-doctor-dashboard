@@ -15,7 +15,7 @@ function SpecializationsSelector<T>({ field }: { field: T }) {
     <MultipleSelector
       {...field}
       onSearch={async (value) => {
-        const req = await fetchData(`/categories/index?search=${value}`);
+        const req = await fetchData(`/specializations/index?search=${value}`);
         if (!req.ok) {
           setErr(true);
           return [];

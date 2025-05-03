@@ -108,7 +108,7 @@ const Step5 = ({
         <div className="grid *:overflow-hidden *:truncate gap-x-2 grid-cols-1 gap-y-5 justify-between md:grid-cols-2 lg:grid-cols-3">
           <p className="overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="font-bold">{t3("years_of_exp")}: </span>
-            {formValues.number_of_years_of_experience}
+            {formValues.years_of_experience}
           </p>
           <p className="overflow-hidden text-ellipsis whitespace-nowrap">
             <span className="font-bold">{t3("classification.label")}: </span>
