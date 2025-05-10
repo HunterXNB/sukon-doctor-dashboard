@@ -284,5 +284,17 @@
       "dashboard-title": "لوحة التحكم",
       "settings-title": "الإعدادات"
     }
+  },
+  "table": {
+    "noResult": "لا توجد بيانات لعرضها.",
+    "noPermission": "لا يوجد صلاحية لعرض هذه البيانات."
+  },
+  "appointmentsTable": {
+    "header": {
+      "user": "المريض",
+      "type": "نوع الميعاد",
+      "time": "الميعاد",
+      "options": "الخيارات"
+    }
   }
 }

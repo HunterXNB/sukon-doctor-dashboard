@@ -285,5 +285,17 @@
       "dashboard-title": "Dashboard",
       "settings-title": "Settings"
     }
+  },
+  "table": {
+    "noResult": "No data to show.",
+    "noPermission": "You don't have permission to access this page."
+  },
+  "appointmentsTable": {
+    "header": {
+      "user": "Patient",
+      "type": "Appointment Type",
+      "time": "Appointment Time",
+      "options": "Options"
+    }
   }
 }
