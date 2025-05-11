@@ -237,7 +237,10 @@ export function WeekView({
     }).format(date);
   }
   return (
-    <div data-slot="week-view" className="flex h-full min-w-[640px] flex-col">
+    <div
+      data-slot="week-view"
+      className="flex h-full max-md:min-w-[640px] flex-col"
+    >
       <div className=" border-[#EAECED]/40 rtl:divide-x-reverse divide-x-[1px] divide-[#EAECED]/40 sticky top-0 z-30 grid grid-cols-8 border-b backdrop-blur-md uppercase">
         <div className="text-muted-foreground/70 py-2 text-center text-xs"></div>
         {days.map((day) => (

@@ -13,7 +13,7 @@ export default async function IncomingAppointments() {
   ).getDate();
   const t = await getTranslations("dashboardHome.incomingAppointments");
   return (
-    <div className="@[900px]:col-span-10 bg-white rounded-[12px] p-6 flex-col flex gap-4">
+    <div className="@[900px]:col-span-10 @container/table bg-white rounded-[12px] p-6 flex-col flex gap-4">
       <div className="flex items-center justify-between">
         <h4 className="font-semibold md:text-xl text-secondary-800">
           {t("title")}
@@ -40,7 +40,7 @@ export default async function IncomingAppointments() {
             </Button>
           ))}
       </div>
-      <div className="@[900px]:max-h-[unset] max-h-[400px] overflow-auto no-scrollbar">
+      <div className="@[900px]:max-h-[unset] overflow-y-auto overflow-x-hidden no-scrollbar @md/table:[&_:is(td,th):not(:is(:first-of-type,:last-of-type))]:table-cell [&_:is(td,th):not(:is(:first-of-type,:last-of-type))]:hidden max-h-[400px] ">
         <DataTable columns={columns} data={data} />
       </div>
     </div>

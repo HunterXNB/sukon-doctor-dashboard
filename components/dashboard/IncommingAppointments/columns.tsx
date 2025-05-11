@@ -73,9 +73,9 @@ function ActionCell({
 function UserCell({ row }: CellContext<Appointment, unknown>) {
   const { user } = row.original;
   return (
-    <div className="flex items-center gap-3 truncate">
+    <div className="flex items-center gap-3 @md/table:max-w-28 truncate">
       <Image src={user.image} alt={user.name} width={32} height={32} />
-      <span className="text-secondary-800 text-xs truncate font-medium">
+      <span className="text-secondary-800 text-xs max-w-40 truncate font-medium">
         {user.name}
       </span>
     </div>
@@ -106,7 +106,7 @@ export const data: Appointment[] = [
   {
     id: "1",
     user: {
-      name: "Ahmed",
+      name: "Ahmeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaad",
       image: "/avatar.svg",
     },
     type: "استشارة فردية",
@@ -183,7 +183,6 @@ function HeaderCell({ header }: HeaderContext<Appointment, unknown>) {
     <p
       className={cn("text-secondary-800 text-xs font-medium", {
         "text-end": header.id === "options",
-        "min-w-24": header.id === "user",
       })}
     >
       {t(header.id)}

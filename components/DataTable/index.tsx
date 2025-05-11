@@ -34,7 +34,7 @@ export default function DataTable<TData, TValue>({
   const locale = useLocale();
   const t = useTranslations("table");
   return (
-    <Table className="border-collapse no-scrollbar">
+    <Table className="border-collapse">
       <TableHeader className="bg-[#F6F6F6] [&_th:last-of-type]:rtl:rounded-l-[6px] [&_th:last-of-type]:ltr:rounded-r-[6px] [&_th:first-of-type]:rtl:rounded-r-[6px] [&_th:first-of-type]:ltr:rounded-l-[6px] hover:[&_tr]:bg-[#F6F6F6] rounded-[6px] overflow-hidden [&_th]:text-secondary-800 p-2.5 [&_tr]:border-none ">
         {table.getHeaderGroups().map((headerGroup) => (
           <TableRow key={headerGroup.id}>
