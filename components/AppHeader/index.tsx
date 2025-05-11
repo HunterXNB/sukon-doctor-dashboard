@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 export default function AppHeader() {
   const { open, isMobile, openMobile } = useSidebar();
   return (
-    <header className="flex items-center @container py-4 px-6 sticky z-[999] top-0 h-20 bg-sidebar gap-2">
+    <header className="flex items-center @container py-4 px-6 sticky z-[40] top-0 h-20 bg-sidebar gap-2">
       {isMobile
         ? !openMobile && (
             <SidebarTrigger className="p-0 hover:bg-transparent  hover:text-primary">
