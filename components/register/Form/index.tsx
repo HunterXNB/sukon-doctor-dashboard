@@ -18,7 +18,7 @@ import RegisterFormContextProvider from "@/context/Register/FormContext";
 import Step5 from "./Step5";
 // import { register } from "@/actions/auth";
 import { useFormServerError } from "@/hooks/useFormServerError";
-import { register, setAuthToken } from "@/actions/auth";
+import { register, setMailToken } from "@/actions/auth";
 import { Link, useRouter } from "@/i18n/routing";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import MobileSteps from "./MobileSteps";
@@ -117,8 +117,8 @@ const Form = () => {
         localStorage.removeItem("form_values");
         localStorage.removeItem("form_step");
         if (state && "token" in state) {
-          await setAuthToken(state.token);
-          return router.replace("/dashboard");
+          await setMailToken(state.token);
+          return router.replace("/login");
         }
         router.push("/");
       }

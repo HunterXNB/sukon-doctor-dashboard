@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { startTransition, useEffect, useState } from "react";
 import { Card, CardContent } from "../ui/card";
 import DashboardImg from "@/assets/dashboard.png";
 import LogoImg from "@/assets/logo.svg";
@@ -26,13 +26,20 @@ import { fetchData } from "@/lib/utils";
 import { toast } from "sonner";
 import useLogin from "@/hooks/useLogin";
 import { useRouter } from "next/navigation";
+import { deleteMailToken } from "@/actions/auth";
 
-function LoginPage() {
-  const [email, setEmail] = useState("");
+function LoginPage({
+  storedEmail,
+  fromRegister,
+}: {
+  storedEmail: string;
+  fromRegister: boolean;
+}) {
+  const [email, setEmail] = useState(storedEmail);
   return !email ? (
     <LoginForm key={"login"} setEmail={setEmail} />
   ) : (
-    <VerifyOTP email={email} key={"verify"} />
+    <VerifyOTP email={email} key={"verify"} fromRegister={fromRegister} />
   );
 }
 const loginFormSchema = z.object({
@@ -183,7 +190,13 @@ const verifyFormSchema = z.object({
   type: z.literal("Provider"),
 });
 type VerifyFormData = z.infer<typeof verifyFormSchema>;
-function VerifyOTP({ email }: { email: string }) {
+function VerifyOTP({
+  email,
+  fromRegister,
+}: {
+  email: string;
+  fromRegister: boolean;
+}) {
   const { mutate } = useLogin();
   const router = useRouter();
   const form = useForm<VerifyFormData>({
@@ -216,6 +229,13 @@ function VerifyOTP({ email }: { email: string }) {
       },
     });
   }
+  useEffect(() => {
+    if (fromRegister) {
+      startTransition(async () => {
+        await deleteMailToken();
+      });
+    }
+  }, []);
   return (
     <div className="flex flex-wrap min-h-screen flex-col md:flex-row justify-between">
       <div className="md:p-16 p-6 max-md:min-h-screen flex flex-col flex-1 ">

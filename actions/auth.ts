@@ -6,6 +6,7 @@ import { getLocale } from "./intl";
 import { redirect } from "@/i18n/routing";
 import { cookies } from "next/headers";
 import { UserProfile } from "@/types/User";
+import jwt from "jsonwebtoken";
 type RegisterFields = keyof RegisterFormValues;
 export async function register(
   state: ActionStateResult<RegisterFields> | undefined,
@@ -56,19 +57,33 @@ export async function register(
       };
     }
   }
+  const token = jwt.sign(
+    { email: userData.get("email") },
+    process.env.JWT_SECRET as string,
+    { expiresIn: "30s" }
+  );
   return {
     success: {
       message: res.message,
     },
     locale,
-    token: res.data.token,
+    token,
   };
 }
 export async function handleUnauthenticated() {
   const locale = await getLocale();
   return redirect({ href: "/login", locale });
 }
-
+export async function setAuthToken(token: string) {
+  (await cookies()).set("token", token, {
+    path: "/",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    httpOnly: true,
+  });
+}
+export async function deleteMailToken() {
+  (await cookies()).delete("mail_token");
+}
 export async function handleForbidden() {
   const locale = await getLocale();
   return redirect({
@@ -81,13 +96,14 @@ export async function getUserToken() {
   return cookieStore.get("token")?.value;
 }
 
-export async function setAuthToken(token: string) {
-  (await cookies()).set("token", token, {
+export async function setMailToken(token: string) {
+  (await cookies()).set("mail_token", token, {
     path: "/",
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    maxAge: 45, // 30 seconds
     httpOnly: true,
   });
 }
+
 export async function isAuthenticated() {
   const token = await getUserToken();
   if (token) {
