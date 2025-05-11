@@ -296,5 +296,39 @@
       "time": "الميعاد",
       "options": "الخيارات"
     }
+  },
+  "dashboardHome": {
+    "topBar": {
+      "search": "بحث"
+    },
+    "stats": {
+      "totalConsultations": "اجمالي الاستشارات",
+      "todaysAppointments": "المواعيد اليوم",
+      "monthsRevenue": "أرباح الشهر",
+      "totalReservations": "اجمالي الحجوزات",
+      "totalVisitors": "جمالى الزوار",
+      "canceledAppointments": "المواعيد الملغية"
+    },
+    "moneyChart": {
+      "title": "الإحصاءات المالية",
+      "description": "المبيعات و صافى الربح",
+      "sales": "المبيعات",
+      "netProfit": "صافى الربح"
+    },
+    "incomingAppointments": {
+      "title": "المواعيد القادمة",
+      "viewAll": "عرض الكل"
+    },
+    "appointmentsApproval": {
+      "title": "طلبات المواعيد",
+      "viewAll": "عرض الكل",
+      "accept": "قبول",
+      "reject": "رفض"
+    }
+  },
+  "calendarPage": {
+    "topBar": {
+      "today": "اليوم"
+    }
   }
 }

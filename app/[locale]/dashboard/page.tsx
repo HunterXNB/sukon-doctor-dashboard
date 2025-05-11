@@ -5,9 +5,11 @@ import MoneyChart from "@/components/dashboard/MoneyChart";
 import Statistics from "@/components/dashboard/Statistics";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import React from "react";
 
-function page() {
+async function page() {
+  const t = await getTranslations("dashboardHome.topBar");
   return (
     <div className="flex flex-col @container">
       <div className="flex-1 grid @[900px]:grid-cols-[repeat(16,1fr)] @[900px]:grid-rows-[minmax(300px,1fr)_max(500px)] grid-cols-1 gap-4">
@@ -19,7 +21,7 @@ function page() {
             <input
               type="text"
               id="search"
-              placeholder="بحث"
+              placeholder={t("search")}
               className="w-full h-full outline-none bg-transparent text-secondary-500 placeholder:text-secondary-500"
             />
           </div>

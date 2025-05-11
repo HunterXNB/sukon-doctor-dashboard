@@ -297,5 +297,39 @@
       "time": "Appointment Time",
       "options": "Options"
     }
+  },
+  "dashboardHome": {
+    "topBar": {
+      "search": "Search"
+    },
+    "stats": {
+      "totalConsultations": "Total Consultations",
+      "todaysAppointments": "Today's Appointments",
+      "monthsRevenue": "Monthly Revenue",
+      "totalReservations": "Total Reservations",
+      "totalVisitors": "Total Visitors",
+      "canceledAppointments": "Canceled Appointments"
+    },
+    "moneyChart": {
+      "title": "Financial Statistics",
+      "description": "Sales and Net Profit",
+      "sales": "Sales",
+      "netProfit": "Net Profit"
+    },
+    "incomingAppointments": {
+      "title": "Upcoming Appointments",
+      "viewAll": "View All"
+    },
+    "appointmentsApproval": {
+      "title": "Appointment Requests",
+      "viewAll": "View All",
+      "accept": "Accept",
+      "reject": "Reject"
+    }
+  },
+  "calendarPage": {
+    "topBar": {
+      "today": "Today"
+    }
   }
 }

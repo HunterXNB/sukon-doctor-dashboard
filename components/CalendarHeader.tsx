@@ -9,8 +9,9 @@ import { ChevronLeftIcon } from "lucide-react";
 import { addWeeks } from "date-fns";
 import { subWeeks } from "date-fns";
 import { useCalendarContext } from "./event-calendar/calendar-context";
-
+import { useTranslations } from "next-intl";
 function CalendarHeader() {
+  const t = useTranslations("calendarPage.topBar");
   const { currentDate, setCurrentDate } = useCalendarContext();
   const handlePrevious = () => {
     setCurrentDate(subWeeks(currentDate, 1));
@@ -64,7 +65,7 @@ function CalendarHeader() {
               className="max-sm:h-8 max-sm:px-2.5"
               onClick={handleToday}
             >
-              Today
+              {t("today")}
             </Button>
           </div>
         </div>

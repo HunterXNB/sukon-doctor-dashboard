@@ -1,8 +1,9 @@
 import DataTable from "@/components/DataTable";
 import { Button } from "@/components/ui/button";
 import { columns, data } from "./columns";
+import { getTranslations } from "next-intl/server";
 
-export default function IncomingAppointments() {
+export default async function IncomingAppointments() {
   const today = new Date();
   const todayDay = today.getDate();
   const lastDayOfMonth = new Date(
@@ -10,14 +11,15 @@ export default function IncomingAppointments() {
     today.getMonth() + 1,
     0
   ).getDate();
+  const t = await getTranslations("dashboardHome.incomingAppointments");
   return (
     <div className="@[900px]:col-span-10 bg-white rounded-[12px] p-6 flex-col flex gap-4">
       <div className="flex items-center justify-between">
         <h4 className="font-semibold md:text-xl text-secondary-800">
-          المواعيد القادمة
+          {t("title")}
         </h4>
         <Button variant={"outline"} size={"sm"}>
-          عرض الكل
+          {t("viewAll")}
         </Button>
       </div>
       <div className="flex overflow-x-auto flex-shrink-0 gap-3 no-scrollbar">

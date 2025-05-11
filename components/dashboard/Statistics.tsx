@@ -1,7 +1,9 @@
 import { ArrowDownRight, ArrowUpRight, Info } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import React from "react";
 
-function Statistics() {
+async function Statistics() {
+  const t = await getTranslations("dashboardHome.stats");
   return (
     <div className="@[900px]:col-span-8 max-h-[580px] grid gap-4 grid-cols-2">
       <div className="bg-white rounded-[12px] py-2 px-4 flex items-center gap-3">
@@ -46,7 +48,7 @@ function Statistics() {
         <div className="flex flex-col flex-1 gap-1">
           <div className="flex items-center justify-between">
             <p className="font-medium text-xs md:text-base text-secondary-800">
-              إجمالي الإستشارات
+              {t("totalConsultations")}
             </p>
             <Info className="md:w-4 md:h-4 h-[10px] w-[10px] text-gray-400 cursor-pointer transition duration-300 hover:text-gray-600" />
           </div>
@@ -111,7 +113,7 @@ function Statistics() {
         <div className="flex flex-col flex-1 gap-1">
           <div className="flex items-center justify-between">
             <p className="font-medium text-xs md:text-base text-secondary-800">
-              مواعيد اليوم
+              {t("todaysAppointments")}
             </p>
             <Info className="md:w-4 md:h-4 h-[10px] w-[10px] text-gray-400 cursor-pointer transition duration-300 hover:text-gray-600" />
           </div>
@@ -156,7 +158,7 @@ function Statistics() {
         <div className="flex flex-col flex-1 gap-1">
           <div className="flex items-center justify-between">
             <p className="font-medium text-xs md:text-base text-secondary-800">
-              أرباح الشهر
+              {t("monthsRevenue")}
             </p>
             <Info className="md:w-4 md:h-4 h-[10px] w-[10px] text-gray-400 cursor-pointer transition duration-300 hover:text-gray-600" />
           </div>
@@ -213,7 +215,7 @@ function Statistics() {
         <div className="flex flex-col flex-1 gap-1">
           <div className="flex items-center justify-between">
             <p className="font-medium text-xs md:text-base text-secondary-800">
-              إجمالي الحجوزات
+              {t("totalReservations")}
             </p>
             <Info className="md:w-4 md:h-4 h-[10px] w-[10px] text-gray-400 cursor-pointer transition duration-300 hover:text-gray-600" />
           </div>
@@ -255,7 +257,7 @@ function Statistics() {
         <div className="flex flex-col flex-1 gap-1">
           <div className="flex items-center justify-between">
             <p className="font-medium text-xs md:text-base text-secondary-800">
-              إجمالي الزوار
+              {t("totalVisitors")}
             </p>
             <Info className="md:w-4 md:h-4 h-[10px] w-[10px] text-gray-400 cursor-pointer transition duration-300 hover:text-gray-600" />
           </div>
@@ -312,7 +314,7 @@ function Statistics() {
         <div className="flex flex-col flex-1 gap-1">
           <div className="flex items-center justify-between">
             <p className="font-medium text-xs md:text-base text-secondary-800">
-              المواعيد الملغية
+              {t("canceledAppointments")}
             </p>
             <Info className="md:w-4 md:h-4 h-[10px] w-[10px] text-gray-400 cursor-pointer transition duration-300 hover:text-gray-600" />
           </div>

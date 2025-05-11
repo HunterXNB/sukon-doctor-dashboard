@@ -10,7 +10,7 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 const data = [
   { month: "Jan", sales: 200, profit: 350 },
   { month: "Feb", sales: 150, profit: 250 },
@@ -27,34 +27,35 @@ const data = [
 ];
 const chartConfig = {
   sales: {
-    label: "صافى الربح",
+    label: "sales",
     color: "#53CCA0",
   },
   profit: {
-    label: "المبيعات",
+    label: "netProfit",
     color: "hsl(var(--primary))",
   },
 } satisfies ChartConfig;
 function MoneyChart() {
   const [activeIndex, setActiveIndex] = useState(5);
+  const t = useTranslations("dashboardHome.moneyChart");
   return (
     <div className="@[900px]:col-span-8 p-6 bg-white rounded-[12px] min-h-[300px] flex flex-col gap-5">
       <div className="flex flex-col gap-0.5">
         <h4 className="font-semibold text-secondary-800 md:text-xl">
-          الإحصائيات المالية
+          {t("title")}
         </h4>
         <div className="flex justify-between">
           <p className="md:text-sm text-xs text-[#777980] flex-1">
-            المبيعات و صافي الربح
+            {t("description")}
           </p>
           <div className="self-end font-medium text-xs flex gap-4 text-[#667085]">
             <div className="flex gap-1.5 items-center">
               <span className="w-3 h-3 rounded-full bg-primary" />
-              المبيعات
+              {t("sales")}
             </div>
             <div className="flex gap-1.5 items-center">
               <span className="w-3 h-3 rounded-full bg-[#53CCA0]" />
-              صافي الربح
+              {t("netProfit")}
             </div>
           </div>
         </div>
@@ -162,6 +163,7 @@ function MoneyChart() {
 }
 function CustomTooltip({ profit, sales }: { profit?: number; sales?: number }) {
   const locale = useLocale();
+  const t = useTranslations("dashboardHome.moneyChart");
   if (!profit || !sales) return null;
 
   const percentage = Math.round((sales / profit) * 100);
@@ -173,12 +175,12 @@ function CustomTooltip({ profit, sales }: { profit?: number; sales?: number }) {
     >
       <div className="flex items-center gap-2 mb-1">
         <span className="text-teal-400">●</span>
-        <span className="text-sm">صافي الربح :</span>
+        <span className="text-sm">{t("netProfit")} :</span>
         <span className="font-bold">{profit.toLocaleString()}</span>
       </div>
       <div className="flex items-center gap-2">
         <span className="text-blue-400">●</span>
-        <span className="text-sm">المبيعات :</span>
+        <span className="text-sm">{t("sales")} :</span>
         <span className="font-bold">{percentage}%</span>
       </div>
     </div>

@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import { Appointment } from "./IncommingAppointments/columns";
 import Image from "next/image";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Separator } from "../ui/separator";
 const data: Appointment[] = [
   {
@@ -80,14 +80,15 @@ const data: Appointment[] = [
   },
 ];
 function AppointmentsApproval() {
+  const t = useTranslations("dashboardHome.appointmentsApproval");
   return (
     <div className="@[900px]:col-span-6 max-h-[400px] @[900px]:max-h-[unset]  flex flex-col gap-4 bg-white rounded-[12px] p-6 ">
       <div className="flex items-center justify-between">
         <h4 className="font-semibold md:text-xl text-secondary-800">
-          طلبات المواعيد
+          {t("title")}
         </h4>
         <Button variant={"outline"} size={"sm"}>
-          عرض الكل
+          {t("viewAll")}
         </Button>
       </div>
       <div className="flex flex-col overflow-auto gap-4 no-scrollbar">
@@ -100,6 +101,7 @@ function AppointmentsApproval() {
 }
 function AppointmentCard({ appointment }: { appointment: Appointment }) {
   const locale = useLocale();
+  const t = useTranslations("dashboardHome.appointmentsApproval");
   return (
     <div className="p-3 flex rounded-[12px] border border-secondary-100 flex-col gap-2">
       <div className="flex gap-2 items-center">
@@ -134,9 +136,9 @@ function AppointmentCard({ appointment }: { appointment: Appointment }) {
           variant={"default"}
           className="text-primary bg-primary-50 hover:bg-primary-200 flex-1"
         >
-          قبول
+          {t("accept")}
         </Button>
-        <Button variant={"destructive-extra"}>رفض</Button>
+        <Button variant={"destructive-extra"}>{t("reject")}</Button>
       </div>
     </div>
   );
