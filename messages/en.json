@@ -331,5 +331,30 @@
     "topBar": {
       "today": "Today"
     }
+  },
+  "tableSearch": {
+    "placeholder": "Search"
+  },
+  "patientsList": {
+    "title": "Patients List",
+    "table": {
+      "header": {
+        "name": "Name",
+        "last_active_at": "Last Active",
+        "summary": "Case Summary",
+        "next_appointment": "Next Appointment",
+        "status": "General Status",
+        "action": "Quick Action"
+      },
+      "actions": {
+        "showDetails": "Show Details",
+        "addTask": "Add Task"
+      },
+      "noDataFound": "No data to show.",
+      "noResult": "No results"
+    }
+  },
+  "pagination": {
+    "view": "View {from}-{to} of {total}"
   }
 }

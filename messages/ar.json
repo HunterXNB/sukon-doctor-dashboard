@@ -330,5 +330,30 @@
     "topBar": {
       "today": "اليوم"
     }
+  },
+  "tableSearch": {
+    "placeholder": "بحث"
+  },
+  "patientsList": {
+    "title": "قائمة الحالات",
+    "table": {
+      "header": {
+        "name": "الاسم",
+        "last_active_at": "آخر تفاعل",
+        "summary": "ملخص الحالة",
+        "next_appointment": "الجلسة القادمة",
+        "status": "الحالة العامة",
+        "action": "إجراء سريع"
+      },
+      "actions": {
+        "showDetails": "عرض التفاصيل",
+        "addTask": "إضافة مهمة"
+      },
+      "noDataFound": "لا توجد بيانات لعرضها.",
+      "noResult": "لا توجد نتائج"
+    }
+  },
+  "pagination": {
+    "view": "عرض {from}-{to} من {total}"
   }
 }
