@@ -17,8 +17,27 @@ import { Button } from "@/components/ui/button";
 function SessionPage() {
   const params = useParams();
   const [isSetupComplete, setIsSetupComplete] = useState(false);
-  const { call, isCallLoading } = useGetCallById(params.callID as string);
-  if (isCallLoading) return <>loading...</>;
+  const { call, isCallLoading } = useGetCallById(params["call-id"] as string);
+  const router = useRouter();
+  useEffect(() => {
+    if (!isCallLoading) {
+      if (call?.state.endedAt) {
+        router.replace("/dashboard");
+      }
+    }
+  }, [isCallLoading, call?.state.endedAt, router]);
+  if (isCallLoading)
+    return (
+      <div className="h-screen w-full flex items-center justify-center text-white">
+        <Loader2 className="animate-spin" />
+      </div>
+    );
+  if (call?.state.endedAt)
+    return (
+      <div className="h-screen w-full flex items-center justify-center text-white">
+        The call has ended
+      </div>
+    );
   return (
     <main className="h-screen w-full">
       <StreamCall call={call}>
@@ -39,7 +58,7 @@ import {
   useCall,
 } from "@stream-io/video-react-sdk";
 import { useParams, useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "@/i18n/routing";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -47,7 +66,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LayoutList, Users } from "lucide-react";
+import { LayoutList, Loader2, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface MeetingSetupProps {
@@ -134,7 +153,7 @@ function MeetingRoom() {
       <div className="fixed bottom-0 flex w-full items-center gap-5 justify-center flex-wrap">
         <CallControls
           onLeave={() => {
-            router.replace("/");
+            router.replace("/dashboard");
           }}
         />
         <DropdownMenu>
@@ -181,7 +200,7 @@ function EndCallButton() {
     call?.state.createdBy &&
     localParticipant.userId === call.state.createdBy.id;
   call?.on("call.ended", () => {
-    router.replace("/");
+    router.replace("/dashboard");
   });
   if (!isMeetingOwner) return null;
 
@@ -189,7 +208,7 @@ function EndCallButton() {
     <Button
       onClick={async () => {
         await call.endCall();
-        router.replace("/");
+        router.replace("/dashboard");
       }}
       className="bg-red-500"
     >

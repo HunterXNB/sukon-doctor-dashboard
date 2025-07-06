@@ -2,6 +2,7 @@
 import { tokenProvider } from "@/actions/stream";
 import { useUser } from "@/context/UserContext";
 import { StreamVideoClient, StreamVideo } from "@stream-io/video-react-sdk";
+import { Loader2 } from "lucide-react";
 import { ReactNode, useEffect, useState } from "react";
 
 const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY as string;
@@ -28,7 +29,12 @@ const StreamClientProvider = ({
     });
     setVideoClient(client);
   }, [sessionID, id, first_name, last_name, avatar]);
-  if (!videoClient) return <div>Loading...</div>;
+  if (!videoClient)
+    return (
+      <div className="h-screen flex w-screen items-center justify-center text-white">
+        <Loader2 className="animate-spin" />
+      </div>
+    );
   return <StreamVideo client={videoClient}>{children}</StreamVideo>;
 };
 export default StreamClientProvider;

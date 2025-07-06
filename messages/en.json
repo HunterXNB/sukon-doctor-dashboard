@@ -272,6 +272,7 @@
       "home": "Home",
       "appointments": "Appointments",
       "appointments-reservations": "Reservation Appointments",
+      "pending-appointments": "Pending Appointments",
       "patients-list": "Patient List",
       "messages": "Messages",
       "financial-reports": "Financial Reports",
@@ -356,5 +357,45 @@
   },
   "pagination": {
     "view": "View {from}-{to} of {total}"
+  },
+  "pendingAppointments": {
+    "title": "Pending Appointments",
+    "description": "Review and manage appointment requests from patients",
+    "pendingCount": "pending",
+    "notes": "Notes",
+    "accept": "Accept",
+    "reject": "Reject",
+    "createCall": "Create Call",
+    "noPendingTitle": "No Pending Appointments",
+    "noPendingDescription": "All appointment requests have been processed. Check back later for new requests.",
+    "table": {
+      "header": {
+        "patient": "Patient",
+        "complaint": "Complaint",
+        "date": "Date & Time",
+        "doctor": "Doctor",
+        "status": "Status",
+        "actions": "Actions"
+      }
+    },
+    "modal": {
+      "acceptTitle": "Accept Appointment",
+      "acceptDescription": "Are you sure you want to accept the appointment request from {patientName}?",
+      "acceptConfirm": "Accept Appointment",
+      "rejectTitle": "Reject Appointment",
+      "rejectDescription": "Are you sure you want to reject the appointment request from {patientName}?",
+      "rejectConfirm": "Reject Appointment",
+      "cancel": "Cancel",
+      "processing": "Processing...",
+      "createCall": {
+        "title": "Create Call",
+        "description": "Are you sure you want to create a call for the appointment with {patientName}?",
+        "createCall": "Create Call",
+        "callCreated": "Call created successfully",
+        "errorCreatingCall": "Error creating call",
+        "cancel": "Cancel",
+        "processing": "Processing..."
+      }
+    }
   }
 }

@@ -6,9 +6,15 @@ export const tokenProvider = async (sessionID: number) => {
     body: JSON.stringify({
       appointment_id: sessionID,
     }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
   const data = (await req.json()) as {
-    token: string;
+    token: {
+      token: string;
+    };
   };
-  return data.token;
+
+  return data.token.token;
 };

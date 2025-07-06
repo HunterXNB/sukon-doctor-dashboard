@@ -271,6 +271,7 @@
       "home": "الرئيسية",
       "appointments": "المواعيد",
       "appointments-reservations": "مواعيد الحجوزات",
+      "pending-appointments": "المواعيد المعلقة",
       "patients-list": "قائمة الحالات",
       "messages": "الرسائل",
       "financial-reports": "التقارير المالية",
@@ -355,5 +356,45 @@
   },
   "pagination": {
     "view": "عرض {from}-{to} من {total}"
+  },
+  "pendingAppointments": {
+    "title": "المواعيد المعلقة",
+    "description": "مراجعة وإدارة طلبات المواعيد من المرضى",
+    "pendingCount": "معلق",
+    "notes": "ملاحظات",
+    "accept": "قبول",
+    "reject": "رفض",
+    "createCall": "إنشاء مكالمة",
+    "noPendingTitle": "لا توجد مواعيد معلقة",
+    "noPendingDescription": "تمت معالجة جميع طلبات المواعيد. تحقق مرة أخرى لاحقًا للحصول على طلبات جديدة.",
+    "table": {
+      "header": {
+        "patient": "المريض",
+        "complaint": "الشكوى",
+        "date": "التاريخ والوقت",
+        "doctor": "الطبيب",
+        "status": "الحالة",
+        "actions": "الإجراءات"
+      }
+    },
+    "modal": {
+      "acceptTitle": "قبول الموعد",
+      "acceptDescription": "هل أنت متأكد من أنك تريد قبول طلب الموعد من {patientName}؟",
+      "acceptConfirm": "قبول الموعد",
+      "rejectTitle": "رفض الموعد",
+      "rejectDescription": "هل أنت متأكد من أنك تريد رفض طلب الموعد من {patientName}؟",
+      "rejectConfirm": "رفض الموعد",
+      "cancel": "إلغاء",
+      "processing": "جاري المعالجة...",
+      "createCall": {
+        "title": "إنشاء مكالمة",
+        "description": "هل أنت متأكد من أنك تريد إنشاء مكالمة للموعد مع {patientName}؟",
+        "createCall": "إنشاء مكالمة",
+        "callCreated": "تم إنشاء المكالمة بنجاح",
+        "errorCreatingCall": "خطأ في إنشاء المكالمة",
+        "cancel": "إلغاء",
+        "processing": "جاري المعالجة..."
+      }
+    }
   }
 }
