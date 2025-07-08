@@ -3,14 +3,14 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_Arabic } from "next/font/google";
+// import { IBM_Plex_Sans_Arabic } from "next/font/google";
 import { Toaster } from "sonner";
 import TanStackQueryClientProvider from "@/components/Providers/QueryClientProvider";
 
-const IBM = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic", "latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-});
+// const IBM = IBM_Plex_Sans_Arabic({
+//   subsets: ["arabic", "latin"],
+//   weight: ["100", "200", "300", "400", "500", "600", "700"],
+// });
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -42,7 +42,7 @@ export default async function LocaleLayout({
 
   return (
     <html dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
-      <body className={`${IBM.className} antialiased`}>
+      <body className={`antialiased w-screen max-w-[100dvw] overflow-x-hidden`}>
         <NextIntlClientProvider messages={messages}>
           <TanStackQueryClientProvider>
             {children}

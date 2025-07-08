@@ -23,18 +23,18 @@
           "req1": "Graduation certificate",
           "req2": "Practicing license",
           "req3": "Professional license",
-          "req4": "Higher academic degree (Master’s or PhD)"
+          "req4": "Higher academic degree (Master's or PhD)"
         },
 
         "psychologist": {
           "title": "Clinical Psychologist",
-          "req1": "Master’s degree in psychology or clinical psychology",
+          "req1": "Master's degree in psychology or clinical psychology",
           "req2": "Two years of experience in clinical psychology",
           "req3": "Professional license"
         },
         "counselor": {
           "title": "Psychological Counselor",
-          "req1": "Master’s degree in psychology or counseling psychology",
+          "req1": "Master's degree in psychology or counseling psychology",
           "req2": "Five years of experience in psychological counseling",
           "req3": "Professional license"
         },
@@ -260,6 +260,114 @@
       "doctors": "Doctors",
       "active": "Active Patients",
       "interested": "Interested"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Integrated tools to help you provide better care, in less time and with less effort!",
+      "cards": [
+        {
+          "title": "Patient File & Reports",
+          "description": "A central system to record all patient data (diagnosis, treatment, sessions, medications) with the ability to extract detailed reports."
+        },
+        {
+          "title": "Appointments & Sessions Management",
+          "description": "A comprehensive system to track patient progress, manage session appointments, and send reminders for medications and sessions."
+        },
+        {
+          "title": "Therapeutic Motivation System",
+          "description": "Tracks patient adherence to medications and therapeutic tasks via the Streak system, with motivational rewards to enhance persistence and progress."
+        },
+        {
+          "title": "AI Assistant for Diagnosis & Analysis",
+          "description": "AI suggests initial plans and treatment based on diagnostic data and doctor guidance, with risk flags and instant specialist alerts."
+        },
+        {
+          "title": "Permissions System",
+          "description": "A flexible system for managing permissions among doctors, specialists, and the admin team, with patient data protection."
+        },
+        {
+          "title": "Comprehensive Psychological Tests",
+          "description": "A list of the most popular psychological tests (like MMPI) with the ability to track results over time and use them in patient follow-up."
+        }
+      ]
+    },
+    "afterServicesHero": {
+      "prompt": "Do you want to manage your clinic more efficiently and comfortably?",
+      "headline": "Track your appointments, analyze your patients' data, and communicate with them securely—all powered by AI!",
+      "subheadline": "Start with Sukon... for smart and easy clinic management!",
+      "button": "Get Started Now"
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "subtitle": "Reviews / Doctors' Opinions",
+      "items": [
+        {
+          "name": "Dr. Omar Kamal",
+          "date": "13 Mar, 2025",
+          "avatar": "/avatar-rect.svg",
+          "rating": 5,
+          "text": "Managing appointments and sessions has become much easier, and the effective reminders help me never miss an appointment. Also, the AI feature for analyzing patient progress is great and saves me a lot of time preparing reports."
+        },
+        {
+          "name": "Dr. Sarah Ahmed",
+          "date": "2 Feb, 2025",
+          "avatar": "/avatar.svg",
+          "rating": 5,
+          "text": "The platform is user-friendly and the support team is always responsive. The integration of AI in patient management is a game changer for my clinic."
+        }
+      ]
+    },
+    "whyUs": {
+      "title": "Why should you choose our services?",
+      "description": "We provide you with a smart and simple system to manage your clinic, save your time, and improve your patients' experience, while ensuring the efficiency and security of their data.",
+      "features": [
+        {
+          "title": "Expertise",
+          "desc": "Our smart system makes clinic management easier and more efficient, helping you focus on patient care."
+        },
+        {
+          "title": "Commitment",
+          "desc": "We are committed to supporting you with the latest technologies that simplify your work and ensure the best treatment experience."
+        },
+        {
+          "title": "Benefits",
+          "desc": "Everything you need in one place! Tools for appointment management, patient follow-up, and accurate data analysis."
+        },
+        {
+          "title": "Communication",
+          "desc": "Enhance your communication with patients through a secure system for easy follow-up and effective interaction."
+        }
+      ]
+    },
+    "contact": {
+      "prompt": "Do you want to ask about something?",
+      "heading": "We care about your inquiry and opinion!",
+      "namePlaceholder": "Your name",
+      "phonePlaceholder": "Your phone number",
+      "messagePlaceholder": "Your inquiry",
+      "button": "Send now",
+      "doctorsNote": "Many doctors and support are ready to respond instantly!"
+    },
+    "footer": {
+      "description": "With <span>Sukon</span><br></br>Track your appointments, analyze your patients' data, and communicate securely—all powered by AI.",
+      "quickLinksTitle": "Quick Links",
+      "servicesTitle": "Our Services",
+      "copyright": "2025© All rights reserved",
+      "links": [
+        { "label": "Home", "href": "/" },
+        { "label": "About", "href": "/about" },
+        { "label": "Services", "href": "/services" },
+        { "label": "Contact", "href": "/contact" },
+        { "label": "Register Now!", "href": "/register" }
+      ],
+      "services": [
+        "Patient File & Reports",
+        "Appointments & Sessions Management",
+        "Therapeutic Motivation System",
+        "Comprehensive Psychological Tests",
+        "Permissions System",
+        "AI Assistant for Diagnosis & Analysis"
+      ]
     }
   },
   "waitingApprovalPage": {
